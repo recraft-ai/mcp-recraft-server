@@ -85,7 +85,7 @@ export const uploadImage = async (directory: string, name: string, image: ImageD
 }
 
 export const rasterizeSvg = async (svg: string, scale?: number): Promise<ImageData> => {
-  const svgBuffer = Buffer.from(svg)
+  const svgBuffer = Buffer.from(svg, 'utf-8')
 
   const { width } = await sharp(svgBuffer).metadata()
 
@@ -101,7 +101,7 @@ export const rasterizeSvg = async (svg: string, scale?: number): Promise<ImageDa
 }
 
 export const getImageSize = async (image: ImageData): Promise<{ width: number; height: number }> => {
-  const buffer = Buffer.from(image.data, 'base64')
+  const buffer = Buffer.from(image.data, (image.mimeType == 'image/svg+xml' ? 'utf-8' : 'base64'))
   const { width, height } = await sharp(buffer).metadata()
   return { width: width ?? 0, height: height ?? 0 }
 }
@@ -112,7 +112,7 @@ export const compressImage = async (image: ImageData, scale?: number): Promise<I
 
   const { width } = await sharp(buffer).metadata()
 
-  let img = sharp(buffer).webp({ quality: 95 })
+  let img = sharp(buffer).webp({quality: 95})
   if (width) img = img.resize({ width: Math.ceil(width * (scale ?? 1.0)) })
 
   const compressedBuffer = await img.toBuffer()
@@ -150,7 +150,7 @@ export const downloadImagesAndMakePreviews = async (imageStorageDirectory: strin
 
   const minSideSize = Math.min(...downloadedImages.map(image => Math.min(image.width, image.height)))
   
-  const calculateTotalLength = (images: ImageData[]) => images.map(image => image.data.length).reduce((a, b) => a + b, 0)
+  const calculateTotalLength = (images: {previewData: ImageData}[]) => images.map(image => image.previewData.data.length).reduce((a, b) => a + b, 0)
 
   let scale = 1.0
   while (calculateTotalLength(downloadedImages) > MESSAGE_LIMIT && scale * 0.5 * minSideSize >= MIN_SIDE_LENGTH - 1e-6) {
