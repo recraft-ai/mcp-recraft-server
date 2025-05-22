@@ -15,6 +15,7 @@ import { removeBackgroundHandler, removeBackgroundTool } from "./tools/RemoveBac
 import { replaceBackgroundHandler, replaceBackgroundTool } from "./tools/ReplaceBackground"
 import { crispUpscaleHandler, crispUpscaleTool } from "./tools/CrispUpscale"
 import { creativeUpscaleHandler, creativeUpscaleTool } from "./tools/CreativeUpscale"
+import { getUserHandler, getUserTool } from "./tools/GetUser"
 
 const server = new Server(
   {
@@ -51,6 +52,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       replaceBackgroundTool,
       crispUpscaleTool,
       creativeUpscaleTool,
+      getUserTool,
     ],
   }
 })
@@ -75,6 +77,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       return await crispUpscaleHandler(recraftServer, args ?? {})
     case creativeUpscaleTool.name:
       return await creativeUpscaleHandler(recraftServer, args ?? {})
+    case getUserTool.name:
+      return await getUserHandler(recraftServer, args ?? {})
     default:
       return {
         content: [
