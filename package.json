@@ -1,0 +1,42 @@
+{
+  "name": "mcp-recraft-server",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "description": "MCP Server implementation for recraft.ai API",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "tsc -p tsconfig.json && npx -y @modelcontextprotocol/inspector node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "gen-oapi": "openapi-generator-cli generate -i $npm_package_config_openapi_schema -g typescript-fetch -o $npm_package_config_openapi_services --type-mappings=Date=string"
+  },
+  "config": {
+    "openapi": {
+      "schema": "../recraft-go-backend/internal/externalapi/api.yaml",
+      "services": "src/api"
+    }
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.20.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^22.15.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "dotenv": "^16.5.0",
+    "mime-types": "^3.0.1",
+    "sharp": "^0.34.1",
+    "zod": "^3.24.4"
+  }
+}
