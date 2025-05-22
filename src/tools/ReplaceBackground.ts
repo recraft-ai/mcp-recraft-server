@@ -58,7 +58,6 @@ export const replaceBackgroundHandler = async (server: RecraftServer, args: Reco
 
     const result = await server.api.imageApi.replaceBackground({
       image: await imageDataToBlob(imageData),
-      mask: new Blob([]),
       prompt: prompt,
       style: style,
       substyle: substyle,

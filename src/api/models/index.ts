@@ -2,6 +2,8 @@
 /* eslint-disable */
 export * from './BasicStyle';
 export * from './CreateStyleResponse';
+export * from './DescribeImageRequest';
+export * from './DescribeImageResponse';
 export * from './GenerateImageRequest';
 export * from './GenerateImageResponse';
 export * from './Image';

@@ -76,8 +76,8 @@ export interface EraseRegionRequest {
 
 export interface GenerateBackgroundRequest {
     image: Blob;
-    mask: Blob;
     prompt: string;
+    mask: Blob;
     n?: number;
     responseFormat?: ResponseFormat;
     imageFormat?: ImageFormat;
@@ -123,8 +123,8 @@ export interface ImageToImageRequest {
 
 export interface InpaintImageRequest {
     image: Blob;
-    mask: Blob;
     prompt: string;
+    mask: Blob;
     n?: number;
     responseFormat?: ResponseFormat;
     imageFormat?: ImageFormat;
@@ -147,7 +147,6 @@ export interface RemoveBackgroundRequest {
 
 export interface ReplaceBackgroundRequest {
     image: Blob;
-    mask: Blob;
     prompt: string;
     n?: number;
     responseFormat?: ResponseFormat;
@@ -480,17 +479,17 @@ export class ImageApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['mask'] == null) {
-            throw new runtime.RequiredError(
-                'mask',
-                'Required parameter "mask" was null or undefined when calling generateBackground().'
-            );
-        }
-
         if (requestParameters['prompt'] == null) {
             throw new runtime.RequiredError(
                 'prompt',
                 'Required parameter "prompt" was null or undefined when calling generateBackground().'
+            );
+        }
+
+        if (requestParameters['mask'] == null) {
+            throw new runtime.RequiredError(
+                'mask',
+                'Required parameter "mask" was null or undefined when calling generateBackground().'
             );
         }
 
@@ -526,10 +525,6 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
-        }
-
-        if (requestParameters['mask'] != null) {
-            formParams.append('mask', requestParameters['mask'] as any);
         }
 
         if (requestParameters['prompt'] != null) {
@@ -582,6 +577,10 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['negativePrompt'] != null) {
             formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['mask'] != null) {
+            formParams.append('mask', requestParameters['mask'] as any);
         }
 
         const response = await this.request({
@@ -859,17 +858,17 @@ export class ImageApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['mask'] == null) {
-            throw new runtime.RequiredError(
-                'mask',
-                'Required parameter "mask" was null or undefined when calling inpaintImage().'
-            );
-        }
-
         if (requestParameters['prompt'] == null) {
             throw new runtime.RequiredError(
                 'prompt',
                 'Required parameter "prompt" was null or undefined when calling inpaintImage().'
+            );
+        }
+
+        if (requestParameters['mask'] == null) {
+            throw new runtime.RequiredError(
+                'mask',
+                'Required parameter "mask" was null or undefined when calling inpaintImage().'
             );
         }
 
@@ -905,10 +904,6 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
-        }
-
-        if (requestParameters['mask'] != null) {
-            formParams.append('mask', requestParameters['mask'] as any);
         }
 
         if (requestParameters['prompt'] != null) {
@@ -961,6 +956,10 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['negativePrompt'] != null) {
             formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['mask'] != null) {
+            formParams.append('mask', requestParameters['mask'] as any);
         }
 
         const response = await this.request({
@@ -1063,13 +1062,6 @@ export class ImageApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['mask'] == null) {
-            throw new runtime.RequiredError(
-                'mask',
-                'Required parameter "mask" was null or undefined when calling replaceBackground().'
-            );
-        }
-
         if (requestParameters['prompt'] == null) {
             throw new runtime.RequiredError(
                 'prompt',
@@ -1099,8 +1091,6 @@ export class ImageApi extends runtime.BaseAPI {
         let useForm = false;
         // use FormData to transmit files using content-type "multipart/form-data"
         useForm = canConsumeForm;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
         if (useForm) {
             formParams = new FormData();
         } else {
@@ -1109,10 +1099,6 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
-        }
-
-        if (requestParameters['mask'] != null) {
-            formParams.append('mask', requestParameters['mask'] as any);
         }
 
         if (requestParameters['prompt'] != null) {

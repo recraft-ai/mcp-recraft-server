@@ -25,6 +25,8 @@ export const TransformModel = {
     Flux11pro: 'flux1_1pro',
     Flux1dev: 'flux1dev',
     Imagen3: 'imagen3',
+    Imagen4: 'imagen4',
+    Imagen4Ultra: 'imagen4_ultra',
     HidreamI1Dev: 'hidream_i1_dev',
     GptImage1Low: 'gpt_image_1_low',
     GptImage1Medium: 'gpt_image_1_medium',
