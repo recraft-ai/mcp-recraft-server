@@ -32,11 +32,6 @@ if (!process.env.IMAGE_STORAGE_DIRECTORY) {
   process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.homedir(), ".mcp-recraft-server")
 }
 
-if (!process.env.RECRAFT_API_URL) {
-  console.error("RECRAFT_API_URL environment variable is not set")
-  process.exit(1)
-}
-
 const apiConfig = new Configuration({
   basePath: process.env.RECRAFT_API_URL,
   accessToken: process.env.RECRAFT_API_KEY,
