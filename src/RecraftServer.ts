@@ -24,7 +24,7 @@ export class RecraftServer {
     const message = `Generated ${images.length} image${ending}.\n` +
      `Original image${ending} ${images.length === 1 ? 'is' : 'are'} saved to:\n${images.map(({path}) => `- file://${path}`).join('\n')}` +
      `\nBelow you can see lower quality preview${ending} of generated image${ending}.` +
-     `\n${previews.length < images.length ? `Note: last ${images.length - previews.length} images are not shown due to message limit, but you can still find them by given paths.` : ''}`
+     `${previews.length < images.length ? `\nNote: last ${images.length - previews.length} images are not shown due to message limit, but you can still find them by given paths.` : ''}`
 
     const content = []
     content.push({

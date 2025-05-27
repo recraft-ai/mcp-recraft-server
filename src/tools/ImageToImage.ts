@@ -2,7 +2,7 @@ import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ImageStyle, ImageSubStyle, TransformModel } from "../api"
 import { downloadImage, imageDataToBlob } from "../utils"
 import z from "zod"
-import { RecraftServer } from "src/RecraftServer"
+import { RecraftServer } from "../RecraftServer"
 
 export const imageToImageTool = {
   name: "image_to_image",

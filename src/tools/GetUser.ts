@@ -1,5 +1,5 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
-import { RecraftServer } from "src/RecraftServer"
+import { RecraftServer } from "../RecraftServer"
 
 const ALMOST_ZERO_CREDITS = 50
 
@@ -14,7 +14,7 @@ export const getUserTool = {
   }
 }
 
-export const getUserHandler = async (server: RecraftServer, args: Record<string, unknown>): Promise<CallToolResult> => {
+export const getUserHandler = async (server: RecraftServer, _args: Record<string, unknown>): Promise<CallToolResult> => {
   try {
     const result = await server.api.userApi.getCurrentUser()
 

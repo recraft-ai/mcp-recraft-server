@@ -2,7 +2,7 @@ import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ImageStyle } from "../api"
 import { downloadImage, imageDataToBlob } from "../utils"
 import z from "zod"
-import { RecraftServer } from "src/RecraftServer"
+import { RecraftServer } from "../RecraftServer"
 
 export const createStyleTool = {
   name: "create_style",
