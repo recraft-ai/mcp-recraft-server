@@ -3,6 +3,9 @@
     <img src="images/recraft.svg" width="500px">
     <br/>Recraft AI MCP Server
   </h1>
+
+  <img src="https://img.shields.io/npm/v/@recraft-ai/mcp-recraft-server" alt="npm version"/>
+  <img src="https://img.shields.io/npm/dw/@recraft-ai/mcp-recraft-server" alt="npm downloads"/>
 </div>
 
 This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
