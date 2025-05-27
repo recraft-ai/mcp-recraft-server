@@ -22,7 +22,7 @@
     "dev": "ts-node src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
-    "test": "tsc -p tsconfig.json && npx -y @modelcontextprotocol/inspector node dist/index.js",
+    "inspect": "tsc -p tsconfig.json && npx -y @modelcontextprotocol/inspector node dist/index.js",
     "typecheck": "tsc --noEmit",
     "gen-oapi": "openapi-generator-cli generate -i $npm_package_config_openapi_schema -g typescript-fetch -o $npm_package_config_openapi_services --type-mappings=Date=string"
   },
