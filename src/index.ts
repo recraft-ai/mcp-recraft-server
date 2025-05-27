@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import "dotenv/config"
 import { Configuration } from './api'
 import { createRecraftApi } from "./RecraftApi"
@@ -5,7 +7,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { generateImageHandler, generateImageTool } from "./tools/GenerateImage"
 import { imageToImageHandler, imageToImageTool } from "./tools/ImageToImage"
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
-import { CallToolRequestSchema, ListToolsRequestSchema, Tool } from "@modelcontextprotocol/sdk/types.js"
+import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js"
 import { RecraftServer } from "./RecraftServer"
 import path from "path"
 import os from "os"

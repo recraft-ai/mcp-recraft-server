@@ -1,7 +1,7 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { downloadImage, imageDataToBlob } from "../utils"
 import z from "zod"
-import { RecraftServer } from "src/RecraftServer"
+import { RecraftServer } from "../RecraftServer"
 
 export const crispUpscaleTool = {
   name: "crisp_upscale",

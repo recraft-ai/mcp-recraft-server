@@ -1,7 +1,7 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ImageSize, ImageStyle, ImageSubStyle, TransformModel } from "../api"
 import z from "zod"
-import { RecraftServer } from "src/RecraftServer"
+import { RecraftServer } from "../RecraftServer"
 
 export const generateImageTool = {
   name: "generate_image",

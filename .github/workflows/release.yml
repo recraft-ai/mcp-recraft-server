@@ -1,0 +1,34 @@
+name: Publish to npm on push to main
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm ci
+      - run: npm test --if-present
+
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          
+          echo "Package $NAME version $VERSION"
+
+          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
+            echo "Version already published – skipping."
+            exit 0
+          fi
+          
+          npm publish --access public

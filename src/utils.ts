@@ -107,7 +107,7 @@ export const getImageSize = async (image: ImageData): Promise<{ width: number; h
 }
 
 export const compressImage = async (image: ImageData, scale?: number): Promise<ImageData> => {
-  const { data, mimeType } = image
+  const { data } = image
   const buffer = Buffer.from(data, 'base64')
 
   const { width } = await sharp(buffer).metadata()
@@ -180,7 +180,7 @@ export const downloadImagesAndMakePreviews = async (imageStorageDirectory: strin
 
   return {
     downloadedImages, 
-    previews
+    previews,
   }
 }
 
