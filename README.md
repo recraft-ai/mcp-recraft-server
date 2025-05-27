@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    <img src="https://www.recraft.ai/main/logo-huge.svg" width="300px" style="filter: invert(1);">
+    <img src="images/recraft.svg" width="500px">
     <br/>Recraft AI MCP Server
   </h1>
 </div>
@@ -36,7 +36,7 @@ In this MCP you can use the following tools:
 
 You can find the detailed explanation of tools, their parameters, and prices in [Recraft AI API docs](https://recraft.ai/docs).
 
-# Manual setup
+# Setup
 
 ### Prerequisites
 
@@ -46,7 +46,29 @@ You can find the detailed explanation of tools, their parameters, and prices in 
 
 - You will need to have some MCP client installed, for example [Claude Desktop](https://claude.ai/download).
 
-### From source
+### Manual setup
+
+Modify your `claude_desktop_config.json` file to add the following:
+
+```json
+{
+  "mcpServers": {
+    "recraft": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@recraft-ai/mcp-recraft-server"
+      ],
+      "env": {
+        "RECRAFT_API_KEY": "insert your Recraft AI API key here",
+        "IMAGE_STORAGE_DIRECTORY": "optional, absolute path to directory where generated images will be stored"
+      }
+    }
+  }
+}
+```
+
+### Manual setup (from source)
 
 Clone this repository:
 
