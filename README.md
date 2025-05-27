@@ -5,8 +5,6 @@
   </h1>
 </div>
 
----
-
 This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
 
 - raster and vector images generation
