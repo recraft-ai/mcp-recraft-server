@@ -1,0 +1,23 @@
+configSchema:
+  type: object
+  required:
+    - RECRAFT_API_KEY
+  properties:
+    RECRAFT_API_KEY:
+      type: string
+      description: 'Your Recraft AI API key (required)'
+    IMAGE_STORAGE_DIRECTORY:
+      type: string
+      description: 'Optional path to store generated images'
+
+startCommand:
+  type: stdio
+  commandFunction: |
+    (config) => ({
+      command: 'node',
+      args: ['build/index.js'],
+      env: {
+        RECRAFT_API_KEY: config.RECRAFT_API_KEY,
+        IMAGE_STORAGE_DIRECTORY: config.IMAGE_STORAGE_DIRECTORY
+      }
+    })
