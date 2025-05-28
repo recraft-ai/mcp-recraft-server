@@ -2,7 +2,8 @@ startCommand:
   type: stdio
   configSchema:
     type: object
-    required: [RECRAFT_API_KEY]
+    required:
+      - RECRAFT_API_KEY
     properties:
       RECRAFT_API_KEY:
         type: string
@@ -10,7 +11,8 @@ startCommand:
       IMAGE_STORAGE_DIRECTORY:
         type: string
         description: 'Local path (absolute) where generated images will be saved, for example: /Users/username/recraft-images'
-  commandFunction: |-
+  commandFunction:
+    |-
     (config) => ({
       command: 'node',
       args: ['dist/index.js'],
