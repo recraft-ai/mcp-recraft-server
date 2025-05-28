@@ -21,7 +21,3 @@ startCommand:
         IMAGE_STORAGE_DIRECTORY: config.IMAGE_STORAGE_DIRECTORY
       }
     })
-
-build:
-  dockerfile: .
-  dockerBuildPath: .
