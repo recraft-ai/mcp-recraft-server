@@ -5,6 +5,8 @@
   </h1>
 </div>
 
+[![smithery badge](https://smithery.ai/badge/@recraft-ai/mcp-recraft-server)](https://smithery.ai/server/@recraft-ai/mcp-recraft-server)
+
 ---
 
 This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
@@ -37,6 +39,14 @@ In this MCP you can use the following tools:
 You can find the detailed explanation of tools, their parameters, and prices in [Recraft AI API docs](https://recraft.ai/docs).
 
 # Manual setup
+
+### Installing via Smithery
+
+To install Recraft AI for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@recraft-ai/mcp-recraft-server):
+
+```bash
+npx -y @smithery/cli install @recraft-ai/mcp-recraft-server --client claude
+```
 
 ### Prerequisites
 
