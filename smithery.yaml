@@ -2,15 +2,17 @@ startCommand:
   type: stdio
   configSchema:
     type: object
-    required: [RECRAFT_API_KEY]
+    required:
+      - RECRAFT_API_KEY
     properties:
       RECRAFT_API_KEY:
         type: string
-        description: 'Your Recraft AI API key (required)'
+        description: 'Your Recraft AI API key. Get one at https://www.recraft.ai/profile/api'
       IMAGE_STORAGE_DIRECTORY:
         type: string
-        description: 'Optional path to store generated images'
-  commandFunction: |-
+        description: 'Local path (absolute) where generated images will be saved, for example: /Users/username/recraft-images'
+  commandFunction:
+    |-
     (config) => ({
       command: 'node',
       args: ['dist/index.js'],
