@@ -1,0 +1,27 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - RECRAFT_API_KEY
+    properties:
+      RECRAFT_API_KEY:
+        type: string
+        description: 'Your Recraft AI API key. Get one at https://www.recraft.ai/profile/api'
+      IMAGE_STORAGE_DIRECTORY:
+        type: string
+        description: 'Local path (absolute) where generated images will be saved, for example: /Users/username/recraft-images'
+  commandFunction:
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        RECRAFT_API_KEY: config.RECRAFT_API_KEY,
+        IMAGE_STORAGE_DIRECTORY: config.IMAGE_STORAGE_DIRECTORY
+      }
+    })
+
+build:
+  dockerfile: .
+  dockerBuildPath: .
