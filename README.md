@@ -61,8 +61,8 @@ Modify your `claude_desktop_config.json` file to add the following:
         "@recraft-ai/mcp-recraft-server"
       ],
       "env": {
-        "RECRAFT_API_KEY": "insert your Recraft AI API key here",
-        "IMAGE_STORAGE_DIRECTORY": "optional, absolute path to directory where generated images will be stored"
+        "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
+        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
   }
@@ -93,8 +93,8 @@ Modify your `claude_desktop_config.json` file to add the following:
       "command": "node",
       "args": ["absolute path to cloned directory /dist/index.js"],
       "env": {
-        "RECRAFT_API_KEY": "insert your Recraft AI API key here",
-        "IMAGE_STORAGE_DIRECTORY": "optional, absolute path to directory where generated images will be stored"
+        "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
+        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
   }
