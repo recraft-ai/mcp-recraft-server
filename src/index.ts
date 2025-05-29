@@ -95,13 +95,6 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 })
 
 const runServer = async () => {
-  try {
-    await api.userApi.getCurrentUser()
-  } catch (error) {
-    console.error('Error fetching user:', error)
-    process.exit(1)
-  }
-
   const transport = new StdioServerTransport()
   await server.connect(transport)
   console.error("Recraft MCP Server running on stdio")
