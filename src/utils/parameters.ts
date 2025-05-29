@@ -1,8 +1,7 @@
-import { number } from "zod";
-import { ImageSize } from "../api/models/ImageSize";
-import { ImageStyle } from "../api/models/ImageStyle";
-import { ImageSubStyle } from "../api/models/ImageSubStyle";
-import { TransformModel } from "../api/models/TransformModel";
+import { ImageSize } from "../api/models/ImageSize"
+import { ImageStyle } from "../api/models/ImageStyle"
+import { ImageSubStyle } from "../api/models/ImageSubStyle"
+import { TransformModel } from "../api/models/TransformModel"
 
 export const PARAMETERS = {
   imageSize: {

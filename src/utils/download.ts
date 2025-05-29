@@ -1,7 +1,7 @@
 import { fileURLToPath } from "url"
-import { readFile, writeFile } from "fs/promises"
+import { readFile } from "fs/promises"
 import mime from 'mime-types'
-import path, { extname } from "path"
+import { extname } from "path"
 import { ImageData } from "."
 
 export const downloadImage = async (imageUrl: string): Promise<ImageData> => {
