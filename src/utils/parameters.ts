@@ -77,3 +77,5 @@ export const PARAMETERS = {
     description: "Image to use as an input. This can be a URL (starting with http:// or https://) or an absolute file path (starting with file://)."
   },
 }
+
+export const STYLE_PRESERVATION_WARNING = "You should provide the same style/substyle/styleID settings as were used for input image generation (if they exist) if there are no specific requirements to change the style in the resulting image."
