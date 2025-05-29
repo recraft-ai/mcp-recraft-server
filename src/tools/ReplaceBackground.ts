@@ -8,7 +8,7 @@ import { downloadImage } from "../utils/download"
 
 export const replaceBackgroundTool = {
   name: "replace_background",
-  description: "Generate an image using Recraft AI from an input image with its background replaced based on the prompt.\n" +
+  description: "Generate an image using Recraft AI from an input image with its detected background replaced based on the prompt.\n" +
     "You can specify the input image, style, model, and number of images to generate.\n" +
     "You don't need to change default parameters if you don't have any specific requirements.\n" +
     "You can use styles to refine the image background generation, and also to generate raster or vector images.\n" +
