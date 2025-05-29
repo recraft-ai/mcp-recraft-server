@@ -78,4 +78,4 @@ export const PARAMETERS = {
   },
 }
 
-export const STYLE_PRESERVATION_WARNING = "You should provide the same style/substyle/styleID settings as were used for input image generation (if exists) if there are no specific requirements to change the style."
+export const STYLE_PRESERVATION_WARNING = "You should provide the same style/substyle/styleID settings as were used for input image generation (if they exist) if there are no specific requirements to change the style in the resulting image."
