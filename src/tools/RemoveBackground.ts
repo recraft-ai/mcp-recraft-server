@@ -1,18 +1,19 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
-import { downloadImage, imageDataToBlob } from "../utils"
+import { imageDataToBlob } from "../utils"
 import z from "zod"
 import { RecraftServer } from "../RecraftServer"
+import { PARAMETERS } from "../utils/parameters"
+import { downloadImage } from "../utils/download"
 
 export const removeBackgroundTool = {
   name: "remove_background",
-  description: "Remove background in the given image. This operation takes an input image and returns the same image with detected background removed.",
+  description: "Remove background in the input image using Recraft AI.\n" +
+    "This operation takes an input image and returns the same image with detected background removed.\n" +
+    "Resulting image will be saved to local storage, path to it and its preview will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
-      imageURI: {
-        type: "string",
-        description: "Image from which background should be removed. This can be a URL (starting with http:// or https://) or a file path (starting with file://)."
-      },
+      imageURI: PARAMETERS.imageURI,
     },
     required: ["imageURI"]
   }

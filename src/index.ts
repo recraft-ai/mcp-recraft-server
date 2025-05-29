@@ -32,7 +32,12 @@ const server = new Server(
 )
 
 if (!process.env.IMAGE_STORAGE_DIRECTORY) {
-  process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.homedir(), ".mcp-recraft-server")
+  try {
+    process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.homedir(), ".mcp-recraft-server")
+  } catch (error) {
+    console.error("Failed to set default image storage directory:", error)
+    process.env.IMAGE_STORAGE_DIRECTORY = '/.mcp-recraft-server'
+  }
 }
 
 const apiConfig = new Configuration({
@@ -60,6 +65,20 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 })
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  try {
+    recraftServer.initializeIfNeeded()
+  } catch (error) {
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Error initializing Recraft server: ${error}`
+        }
+      ],
+      isError: true
+    }
+  }
+
   const {params: {name: tool, arguments: args}} = request
 
   switch (tool) {

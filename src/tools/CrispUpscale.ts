@@ -1,18 +1,20 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
-import { downloadImage, imageDataToBlob } from "../utils"
+import { imageDataToBlob } from "../utils"
 import z from "zod"
 import { RecraftServer } from "../RecraftServer"
+import { PARAMETERS } from "../utils/parameters"
+import { downloadImage } from "../utils/download"
 
 export const crispUpscaleTool = {
   name: "crisp_upscale",
-  description: "Crisp upscale of the given image. This operation takes an input image and returns an upscaled image, making the image sharper and cleaner.",
+  description: "Crisp upscale of the input image using Recraft AI.\n" +
+    "This operation takes an input image and returns an upscaled image, making the image sharper and cleaner.\n" +
+    "This version of upscale is much cheaper and faster than creative upscale.\n" +
+    "Resulting image will be saved to local storage, path to it and its preview will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
-      imageURI: {
-        type: "string",
-        description: "Image that will be upscaled. This can be a URL (starting with http:// or https://) or a file path (starting with file://)."
-      },
+      imageURI: PARAMETERS.imageURI,
     },
     required: ["imageURI"]
   }

@@ -2,15 +2,23 @@ import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { GenerateImageResponse, Image } from "./api"
 import { RecraftApi } from "./RecraftApi"
 import { existsSync, mkdirSync } from "fs"
-import { downloadImagesAndMakePreviews } from "./utils"
+import { downloadImagesAndMakePreviews } from "./utils/response"
 
 export class RecraftServer {
   api: RecraftApi
   imageStorageDirectory: string
+  initialized: boolean = false
 
   constructor(api: RecraftApi, imageStorageDirectory: string) {
     this.api = api
     this.imageStorageDirectory = imageStorageDirectory
+  }
+
+  initializeIfNeeded = () => {
+    if (this.initialized) {
+      return
+    }
+    this.initialized = true
 
     if (!existsSync(this.imageStorageDirectory)) {
       mkdirSync(this.imageStorageDirectory, { recursive: true })

@@ -5,7 +5,7 @@ const ALMOST_ZERO_CREDITS = 50
 
 export const getUserTool = {
   name: "get_user",
-  description: "Get information about current Recraft API user (their email, name, and credit balance).",
+  description: "Get information about the current Recraft AI API user (their email, name, and credit balance).",
   inputSchema: {
     type: "object",
     properties: {
