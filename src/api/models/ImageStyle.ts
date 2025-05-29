@@ -21,7 +21,8 @@ export const ImageStyle = {
     DigitalIllustration: 'digital_illustration',
     Icon: 'icon',
     RealisticImage: 'realistic_image',
-    VectorIllustration: 'vector_illustration'
+    VectorIllustration: 'vector_illustration',
+    LogoRaster: 'logo_raster'
 } as const;
 export type ImageStyle = typeof ImageStyle[keyof typeof ImageStyle];
 

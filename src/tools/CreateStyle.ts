@@ -1,18 +1,21 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ImageStyle } from "../api"
-import { downloadImage, imageDataToBlob } from "../utils"
+import { imageDataToBlob } from "../utils"
 import z from "zod"
 import { RecraftServer } from "../RecraftServer"
+import { downloadImage } from "../utils/download"
 
 export const createStyleTool = {
   name: "create_style",
-  description: "Create a style from the set of style reference images.",
+  description: "Create a style in Recraft AI from the set of style reference images.\n" +
+    "A style is extracted from the provided images and can be used in image generation tools.\n" +
+    "ID of the created style will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
       style: {
         type: "string",
-        enum: Object.values(ImageStyle),
+        enum: [ImageStyle.RealisticImage, ImageStyle.DigitalIllustration, ImageStyle.VectorIllustration, ImageStyle.Icon],
         description: "Basic visual style in which the style will be created."
       },
       imageURIs: {

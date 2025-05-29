@@ -2,47 +2,25 @@ import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ImageSize, ImageStyle, ImageSubStyle, TransformModel } from "../api"
 import z from "zod"
 import { RecraftServer } from "../RecraftServer"
+import { PARAMETERS } from "../utils/parameters"
 
 export const generateImageTool = {
   name: "generate_image",
-  description: "Generate an image from a text prompt",
+  description: "Generate an image using Recraft AI from a text prompt.\n" +
+      "You can specify the image size, style, model, and number of images to generate.\n" +
+      "You don't need to change default parameters if you don't have any specific requirements.\n" +
+      "You can use styles to refine the image generation, and also to generate raster or vector images.\n" +
+      "Generated images will be saved to local storage, paths to them and their previews will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
-      prompt: {
-        type: "string",
-        description: "Text prompt of the image you want to generate"
-      },
-      size: {
-        type: "string",
-        enum: Object.values(ImageSize),
-        description: "Image dimensions"
-      },
-      style: {
-        type: "string",
-        enum: Object.values(ImageStyle),
-        description: "Visual style to apply"
-      },
-      substyle: {
-        type: "string",
-        enum: Object.values(ImageSubStyle),
-        description: "Visual substyle to apply, can be specified only with style"
-      },
-      styleID: {
-        type: "string",
-        description: "ID of the style to apply, mutually exclusive with style"
-      },
-      model: {
-        type: "string",
-        enum: [TransformModel.Recraftv3, TransformModel.Recraftv2],
-        description: "Model version to use"
-      },
-      numberOfImages: {
-        type: "integer",
-        minimum: 1,
-        maximum: 6,
-        description: "Number of images to generate"
-      }
+      prompt: PARAMETERS.promptSimple,
+      size: PARAMETERS.imageSize,
+      style: PARAMETERS.imageStyle,
+      substyle: PARAMETERS.imageSubStyle,
+      styleID: PARAMETERS.imageStyleID,
+      model: PARAMETERS.transformModel,
+      numberOfImages: PARAMETERS.numberOfImages,
     },
     required: ["prompt"]
   }

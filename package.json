@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "name": "@recraft-ai/mcp-recraft-server",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "publishConfig": {
     "access": "public"
   },
@@ -28,7 +28,7 @@
   },
   "config": {
     "openapi": {
-      "schema": "../recraft-go-backend/internal/externalapi/api.yaml",
+      "schema": "https://external.api.recraft.ai/doc/spec/api.yaml",
       "services": "src/api"
     }
   },

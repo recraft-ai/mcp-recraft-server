@@ -1,43 +1,31 @@
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js"
 import { ImageStyle, ImageSubStyle } from "../api"
-import { downloadImage, imageDataToBlob } from "../utils"
+import { imageDataToBlob } from "../utils"
 import z from "zod"
 import { RecraftServer } from "../RecraftServer"
+import { PARAMETERS } from "../utils/parameters"
+import { downloadImage } from "../utils/download"
 
 export const replaceBackgroundTool = {
   name: "replace_background",
-  description: "Generate an image from an image with background replaced based on the image and prompt",
+  description: "Generate an image using Recraft AI from an input image with its detected background replaced based on the prompt.\n" +
+    "You can specify the input image, style, model, and number of images to generate.\n" +
+    "You don't need to change default parameters if you don't have any specific requirements.\n" +
+    "You can use styles to refine the image background generation, and also to generate raster or vector images.\n" +
+    "Generated images will be saved to local storage, paths to them and their previews will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
-      imageURI: {
-        type: "string",
-        description: "Image in which the background will be replaced. This can be a URL (starting with http:// or https://) or a file path (starting with file://)."
-      },
+      imageURI: PARAMETERS.imageURI,
       prompt: {
         type: "string",
-        description: "Text prompt of the background areas that will be changed"
+        description: "Text prompt of the background areas that will be changed.\n" +
+          "Its length should be from 1 to 1024 characters."
       },
-      style: {
-        type: "string",
-        enum: Object.values(ImageStyle),
-        description: "Visual style to apply"
-      },
-      substyle: {
-        type: "string",
-        enum: Object.values(ImageSubStyle),
-        description: "Visual substyle to apply, can be specified only with style"
-      },
-      styleID: {
-        type: "string",
-        description: "ID of the style to apply, mutually exclusive with style"
-      },
-      numberOfImages: {
-        type: "integer",
-        minimum: 1,
-        maximum: 6,
-        description: "Number of images to generate"
-      }
+      style: PARAMETERS.imageStyle,
+      substyle: PARAMETERS.imageSubStyle,
+      styleID: PARAMETERS.imageStyleID,
+      numberOfImages: PARAMETERS.numberOfImages,
     },
     required: ["imageURI", "prompt"]
   }
