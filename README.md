@@ -4,6 +4,7 @@
     <br/>Recraft AI MCP Server
   </h1>
 
+  <img src="https://badge.mcpx.dev?type=server" title="MCP Server"/>
   <img src="https://img.shields.io/npm/v/@recraft-ai/mcp-recraft-server" alt="npm version"/>
   <img src="https://img.shields.io/npm/dw/@recraft-ai/mcp-recraft-server" alt="npm downloads"/>
 </div>
