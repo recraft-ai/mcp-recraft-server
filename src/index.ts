@@ -36,7 +36,14 @@ if (!process.env.IMAGE_STORAGE_DIRECTORY) {
     process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.homedir(), ".mcp-recraft-server")
   } catch (error) {
     console.error("Failed to set default image storage directory:", error)
-    process.env.IMAGE_STORAGE_DIRECTORY = '/.mcp-recraft-server'
+
+    try {
+      process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.tmpdir(), ".mcp-recraft-server")
+    } catch (error) {
+      console.error("Failed to set default image storage directory:", error)
+
+      process.env.IMAGE_STORAGE_DIRECTORY = ".mcp-recraft-server"
+    }
   }
 }
 
