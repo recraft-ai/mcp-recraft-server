@@ -22,8 +22,8 @@ import { getUserHandler, getUserTool } from "./tools/GetUser"
 const server = new Server(
   {
     name: 'mcp-recraft-server',
-    version: '1.0.0',
-  }, 
+    version: '1.1.1',
+  },
   {
     capabilities: {
       tools: {},
