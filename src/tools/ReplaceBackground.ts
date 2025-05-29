@@ -11,6 +11,7 @@ export const replaceBackgroundTool = {
   description: "Generate an image using Recraft AI from an input image with its detected background replaced based on the prompt.\n" +
     "You can specify the input image, style, model, and number of images to generate.\n" +
     "You don't need to change default parameters if you don't have any specific requirements.\n" +
+    "The use of the same style settings as the input image is recommended if there are no specific requirements to change the style.\n" +
     "You can use styles to refine the image background generation, and also to generate raster or vector images.\n" +
     "Generated images will be saved to local storage, paths to them and their previews will be returned in the response.",
   inputSchema: {

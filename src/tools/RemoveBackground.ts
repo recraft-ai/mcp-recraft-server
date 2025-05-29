@@ -8,7 +8,7 @@ import { downloadImage } from "../utils/download"
 export const removeBackgroundTool = {
   name: "remove_background",
   description: "Remove background in the input image using Recraft AI.\n" +
-    "This operation takes an input image and returns the same image with detected background removed.\n" +
+    "This operation takes an input image and returns the same image with detected background removed. Raster image will be always returned.\n" +
     "Resulting image will be saved to local storage, path to it and its preview will be returned in the response.",
   inputSchema: {
     type: "object",
