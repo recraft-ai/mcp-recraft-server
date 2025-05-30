@@ -59,7 +59,7 @@ Modify your `claude_desktop_config.json` file to add the following:
       "command": "npx",
       "args": [
         "-y",
-        "@recraft-ai/mcp-recraft-server"
+        "@recraft-ai/mcp-recraft-server@latest"
       ],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
@@ -92,7 +92,7 @@ Modify your `claude_desktop_config.json` file to add the following:
   "mcpServers": {
     "recraft": {
       "command": "node",
-      "args": ["absolute path to cloned directory /dist/index.js"],
+      "args": ["<ABSOLUTE_PATH_TO_CLONED_DIRECTORY>/dist/index.js"],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
         "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
