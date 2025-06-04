@@ -22,7 +22,7 @@ import { getUserHandler, getUserTool } from "./tools/GetUser"
 const server = new Server(
   {
     name: 'mcp-recraft-server',
-    version: '1.2.0',
+    version: '1.2.1',
   },
   {
     capabilities: {
@@ -50,6 +50,9 @@ if (!process.env.IMAGE_STORAGE_DIRECTORY) {
 const apiConfig = new Configuration({
   basePath: process.env.RECRAFT_API_URL,
   accessToken: process.env.RECRAFT_API_KEY,
+  headers: {
+    'X-Client-Type': 'mcp-recraft-server',
+  }
 })
 const api = createRecraftApi(apiConfig)
 
