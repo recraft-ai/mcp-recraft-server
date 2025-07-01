@@ -22,7 +22,7 @@ import { getUserHandler, getUserTool } from "./tools/GetUser"
 const server = new Server(
   {
     name: 'mcp-recraft-server',
-    version: '1.3.0',
+    version: '1.4.0',
   },
   {
     capabilities: {
@@ -32,9 +32,6 @@ const server = new Server(
 )
 
 const remoteResultsStorage = process.env.RECRAFT_REMOTE_RESULTS_STORAGE === "1"
-if (!remoteResultsStorage) {
-  throw new Error("OHUEL?")
-}
 
 if (!remoteResultsStorage && !process.env.IMAGE_STORAGE_DIRECTORY) {
   try {
