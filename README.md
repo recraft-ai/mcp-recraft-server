@@ -63,6 +63,7 @@ Modify your `claude_desktop_config.json` file to add the following:
       ],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
+        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORATE_INDICATOR>",
         "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
@@ -95,6 +96,7 @@ Modify your `claude_desktop_config.json` file to add the following:
       "args": ["<ABSOLUTE_PATH_TO_CLONED_DIRECTORY>/dist/index.js"],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
+        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORATE_INDICATOR>",
         "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
@@ -105,4 +107,5 @@ Modify your `claude_desktop_config.json` file to add the following:
 You can specify these parameters:
 
 - `RECRAFT_API_KEY`: mandatory parameter, your [Recraft AI API](https://www.recraft.ai/profile/api) key.
-- `IMAGE_STORAGE_DIRECTORY`: optional parameter, you can specify the directory in which all generated images will be stored. By default this directory is `$HOME_DIR/.mcp-recraft-server`.
+- `RECRAFT_REMOTE_RESULTS_STORAGE`: optional parameter, you can set the value to "1", in this case all generated images will be stored remotely and their URLs will be given. Also, `IMAGE_STORAGE_DIRECTORY` will be ignored in this case.
+- `IMAGE_STORAGE_DIRECTORY`: optional parameter, you can specify the directory in which all generated images will be stored. By default this directory is `$HOME_DIR/.mcp-recraft-server`. If `RECRAFT_REMOTE_RESULTS_STORAGE="1"`, the value of this parameter is ignored.
