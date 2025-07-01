@@ -32,19 +32,19 @@ export interface Image {
      * @type {string}
      * @memberof Image
      */
-    imageId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Image
-     */
     b64Json?: string;
     /**
      * 
+     * @type {ImageFeatures}
+     * @memberof Image
+     */
+    features?: ImageFeatures;
+    /**
+     * 
      * @type {string}
      * @memberof Image
      */
-    url?: string;
+    imageId: string;
     /**
      * 
      * @type {string}
@@ -53,10 +53,10 @@ export interface Image {
     revisedPrompt?: string;
     /**
      * 
-     * @type {ImageFeatures}
+     * @type {string}
      * @memberof Image
      */
-    features?: ImageFeatures;
+    url?: string;
 }
 
 /**
@@ -77,11 +77,11 @@ export function ImageFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ima
     }
     return {
         
-        'imageId': json['image_id'],
         'b64Json': json['b64_json'] == null ? undefined : json['b64_json'],
-        'url': json['url'] == null ? undefined : json['url'],
-        'revisedPrompt': json['revised_prompt'] == null ? undefined : json['revised_prompt'],
         'features': json['features'] == null ? undefined : ImageFeaturesFromJSON(json['features']),
+        'imageId': json['image_id'],
+        'revisedPrompt': json['revised_prompt'] == null ? undefined : json['revised_prompt'],
+        'url': json['url'] == null ? undefined : json['url'],
     };
 }
 
@@ -96,11 +96,11 @@ export function ImageToJSONTyped(value?: Image | null, ignoreDiscriminator: bool
 
     return {
         
-        'image_id': value['imageId'],
         'b64_json': value['b64Json'],
-        'url': value['url'],
-        'revised_prompt': value['revisedPrompt'],
         'features': ImageFeaturesToJSON(value['features']),
+        'image_id': value['imageId'],
+        'revised_prompt': value['revisedPrompt'],
+        'url': value['url'],
     };
 }
 

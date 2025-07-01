@@ -43,6 +43,12 @@ import {
 export interface BasicStyle {
     /**
      * 
+     * @type {TransformModel}
+     * @memberof BasicStyle
+     */
+    model: TransformModel;
+    /**
+     * 
      * @type {ImageStyle}
      * @memberof BasicStyle
      */
@@ -53,12 +59,6 @@ export interface BasicStyle {
      * @memberof BasicStyle
      */
     substyle?: ImageSubStyle;
-    /**
-     * 
-     * @type {TransformModel}
-     * @memberof BasicStyle
-     */
-    model: TransformModel;
 }
 
 
@@ -67,8 +67,8 @@ export interface BasicStyle {
  * Check if a given object implements the BasicStyle interface.
  */
 export function instanceOfBasicStyle(value: object): value is BasicStyle {
-    if (!('style' in value) || value['style'] === undefined) return false;
     if (!('model' in value) || value['model'] === undefined) return false;
+    if (!('style' in value) || value['style'] === undefined) return false;
     return true;
 }
 
@@ -82,9 +82,9 @@ export function BasicStyleFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
+        'model': TransformModelFromJSON(json['model']),
         'style': ImageStyleFromJSON(json['style']),
         'substyle': json['substyle'] == null ? undefined : ImageSubStyleFromJSON(json['substyle']),
-        'model': TransformModelFromJSON(json['model']),
     };
 }
 
@@ -99,9 +99,9 @@ export function BasicStyleToJSONTyped(value?: BasicStyle | null, ignoreDiscrimin
 
     return {
         
+        'model': TransformModelToJSON(value['model']),
         'style': ImageStyleToJSON(value['style']),
         'substyle': ImageSubStyleToJSON(value['substyle']),
-        'model': TransformModelToJSON(value['model']),
     };
 }
 

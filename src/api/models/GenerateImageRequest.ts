@@ -78,78 +78,6 @@ import {
 export interface GenerateImageRequest {
     /**
      * 
-     * @type {string}
-     * @memberof GenerateImageRequest
-     */
-    prompt: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof GenerateImageRequest
-     */
-    n?: number;
-    /**
-     * 
-     * @type {ResponseFormat}
-     * @memberof GenerateImageRequest
-     */
-    responseFormat?: ResponseFormat;
-    /**
-     * 
-     * @type {ImageFormat}
-     * @memberof GenerateImageRequest
-     */
-    imageFormat?: ImageFormat;
-    /**
-     * 
-     * @type {ImageSize}
-     * @memberof GenerateImageRequest
-     */
-    size?: ImageSize;
-    /**
-     * 
-     * @type {string}
-     * @memberof GenerateImageRequest
-     */
-    styleId?: string;
-    /**
-     * 
-     * @type {ImageStyle}
-     * @memberof GenerateImageRequest
-     */
-    style?: ImageStyle;
-    /**
-     * 
-     * @type {ImageSubStyle}
-     * @memberof GenerateImageRequest
-     */
-    substyle?: ImageSubStyle;
-    /**
-     * 
-     * @type {UserControls}
-     * @memberof GenerateImageRequest
-     */
-    controls?: UserControls;
-    /**
-     * 
-     * @type {TransformModel}
-     * @memberof GenerateImageRequest
-     */
-    model?: TransformModel;
-    /**
-     * 
-     * @type {number}
-     * @memberof GenerateImageRequest
-     */
-    randomSeed?: number;
-    /**
-     * 
-     * @type {Array<TextLayoutItem>}
-     * @memberof GenerateImageRequest
-     */
-    textLayout?: Array<TextLayoutItem>;
-    /**
-     * 
      * @type {boolean}
      * @memberof GenerateImageRequest
      */
@@ -162,10 +90,88 @@ export interface GenerateImageRequest {
     calculateFeatures?: boolean;
     /**
      * 
+     * @type {UserControls}
+     * @memberof GenerateImageRequest
+     */
+    controls?: UserControls;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GenerateImageRequest
+     */
+    expire?: boolean;
+    /**
+     * 
+     * @type {ImageFormat}
+     * @memberof GenerateImageRequest
+     */
+    imageFormat?: ImageFormat;
+    /**
+     * 
+     * @type {TransformModel}
+     * @memberof GenerateImageRequest
+     */
+    model?: TransformModel;
+    /**
+     * 
+     * @type {number}
+     * @memberof GenerateImageRequest
+     */
+    n?: number;
+    /**
+     * 
      * @type {string}
      * @memberof GenerateImageRequest
      */
     negativePrompt?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GenerateImageRequest
+     */
+    prompt: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof GenerateImageRequest
+     */
+    randomSeed?: number;
+    /**
+     * 
+     * @type {ResponseFormat}
+     * @memberof GenerateImageRequest
+     */
+    responseFormat?: ResponseFormat;
+    /**
+     * 
+     * @type {ImageSize}
+     * @memberof GenerateImageRequest
+     */
+    size?: ImageSize;
+    /**
+     * 
+     * @type {ImageStyle}
+     * @memberof GenerateImageRequest
+     */
+    style?: ImageStyle;
+    /**
+     * 
+     * @type {string}
+     * @memberof GenerateImageRequest
+     */
+    styleId?: string;
+    /**
+     * 
+     * @type {ImageSubStyle}
+     * @memberof GenerateImageRequest
+     */
+    substyle?: ImageSubStyle;
+    /**
+     * 
+     * @type {Array<TextLayoutItem>}
+     * @memberof GenerateImageRequest
+     */
+    textLayout?: Array<TextLayoutItem>;
 }
 
 
@@ -188,21 +194,22 @@ export function GenerateImageRequestFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'prompt': json['prompt'],
-        'n': json['n'] == null ? undefined : json['n'],
-        'responseFormat': json['response_format'] == null ? undefined : ResponseFormatFromJSON(json['response_format']),
-        'imageFormat': json['image_format'] == null ? undefined : ImageFormatFromJSON(json['image_format']),
-        'size': json['size'] == null ? undefined : ImageSizeFromJSON(json['size']),
-        'styleId': json['style_id'] == null ? undefined : json['style_id'],
-        'style': json['style'] == null ? undefined : ImageStyleFromJSON(json['style']),
-        'substyle': json['substyle'] == null ? undefined : ImageSubStyleFromJSON(json['substyle']),
-        'controls': json['controls'] == null ? undefined : UserControlsFromJSON(json['controls']),
-        'model': json['model'] == null ? undefined : TransformModelFromJSON(json['model']),
-        'randomSeed': json['random_seed'] == null ? undefined : json['random_seed'],
-        'textLayout': json['text_layout'] == null ? undefined : ((json['text_layout'] as Array<any>).map(TextLayoutItemFromJSON)),
         'blockNsfw': json['block_nsfw'] == null ? undefined : json['block_nsfw'],
         'calculateFeatures': json['calculate_features'] == null ? undefined : json['calculate_features'],
+        'controls': json['controls'] == null ? undefined : UserControlsFromJSON(json['controls']),
+        'expire': json['expire'] == null ? undefined : json['expire'],
+        'imageFormat': json['image_format'] == null ? undefined : ImageFormatFromJSON(json['image_format']),
+        'model': json['model'] == null ? undefined : TransformModelFromJSON(json['model']),
+        'n': json['n'] == null ? undefined : json['n'],
         'negativePrompt': json['negative_prompt'] == null ? undefined : json['negative_prompt'],
+        'prompt': json['prompt'],
+        'randomSeed': json['random_seed'] == null ? undefined : json['random_seed'],
+        'responseFormat': json['response_format'] == null ? undefined : ResponseFormatFromJSON(json['response_format']),
+        'size': json['size'] == null ? undefined : ImageSizeFromJSON(json['size']),
+        'style': json['style'] == null ? undefined : ImageStyleFromJSON(json['style']),
+        'styleId': json['style_id'] == null ? undefined : json['style_id'],
+        'substyle': json['substyle'] == null ? undefined : ImageSubStyleFromJSON(json['substyle']),
+        'textLayout': json['text_layout'] == null ? undefined : ((json['text_layout'] as Array<any>).map(TextLayoutItemFromJSON)),
     };
 }
 
@@ -217,21 +224,22 @@ export function GenerateImageRequestToJSONTyped(value?: GenerateImageRequest | n
 
     return {
         
-        'prompt': value['prompt'],
-        'n': value['n'],
-        'response_format': ResponseFormatToJSON(value['responseFormat']),
-        'image_format': ImageFormatToJSON(value['imageFormat']),
-        'size': ImageSizeToJSON(value['size']),
-        'style_id': value['styleId'],
-        'style': ImageStyleToJSON(value['style']),
-        'substyle': ImageSubStyleToJSON(value['substyle']),
-        'controls': UserControlsToJSON(value['controls']),
-        'model': TransformModelToJSON(value['model']),
-        'random_seed': value['randomSeed'],
-        'text_layout': value['textLayout'] == null ? undefined : ((value['textLayout'] as Array<any>).map(TextLayoutItemToJSON)),
         'block_nsfw': value['blockNsfw'],
         'calculate_features': value['calculateFeatures'],
+        'controls': UserControlsToJSON(value['controls']),
+        'expire': value['expire'],
+        'image_format': ImageFormatToJSON(value['imageFormat']),
+        'model': TransformModelToJSON(value['model']),
+        'n': value['n'],
         'negative_prompt': value['negativePrompt'],
+        'prompt': value['prompt'],
+        'random_seed': value['randomSeed'],
+        'response_format': ResponseFormatToJSON(value['responseFormat']),
+        'size': ImageSizeToJSON(value['size']),
+        'style': ImageStyleToJSON(value['style']),
+        'style_id': value['styleId'],
+        'substyle': ImageSubStyleToJSON(value['substyle']),
+        'text_layout': value['textLayout'] == null ? undefined : ((value['textLayout'] as Array<any>).map(TextLayoutItemToJSON)),
     };
 }
 

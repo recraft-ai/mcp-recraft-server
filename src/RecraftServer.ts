@@ -6,12 +6,16 @@ import { downloadImagesAndMakePreviews } from "./utils/response"
 
 export class RecraftServer {
   api: RecraftApi
-  imageStorageDirectory: string
-  initialized: boolean = false
+  private imageStorageDirectory: string | undefined
+  private initialized: boolean = false
 
-  constructor(api: RecraftApi, imageStorageDirectory: string) {
+  constructor(api: RecraftApi, imageStorageDirectory: string | undefined) {
     this.api = api
     this.imageStorageDirectory = imageStorageDirectory
+  }
+
+  get isLocalResultsStorage(): boolean {
+    return !!this.imageStorageDirectory
   }
 
   initializeIfNeeded = () => {
@@ -20,7 +24,7 @@ export class RecraftServer {
     }
     this.initialized = true
 
-    if (!existsSync(this.imageStorageDirectory)) {
+    if (this.imageStorageDirectory && !existsSync(this.imageStorageDirectory)) {
       mkdirSync(this.imageStorageDirectory, { recursive: true })
     }
   }
@@ -28,11 +32,13 @@ export class RecraftServer {
   transformGenerateImageResponseToCallToolResult = async (result: GenerateImageResponse): Promise<CallToolResult> => {
     const {downloadedImages: images, previews} = await downloadImagesAndMakePreviews(this.imageStorageDirectory, result.data)
 
+    const pathOrUrlDesc = this.isLocalResultsStorage ? 'path' : 'URL'
+
     const ending = `${images.length === 1 ? '' : 's'}`
     const message = `Generated ${images.length} image${ending}.\n` +
-     `Original image${ending} ${images.length === 1 ? 'is' : 'are'} saved to:\n${images.map(({path}) => `- file://${path}`).join('\n')}` +
+     `Original image${ending} ${images.length === 1 ? 'is' : 'are'} saved to:\n${images.map(({pathOrUrl}) => `- ${pathOrUrl}`).join('\n')}` +
      `\nBelow you can see lower quality preview${ending} of generated image${ending}.` +
-     `${previews.length < images.length ? `\nNote: last ${images.length - previews.length} images are not shown due to message limit, but you can still find them by given paths.` : ''}`
+     `${previews.length < images.length ? `\nNote: last ${images.length - previews.length} images are not shown due to message limit, but you can still find them by given ${pathOrUrlDesc}s.` : ''}`
 
     const content = []
     content.push({
@@ -52,10 +58,12 @@ export class RecraftServer {
 
     const imageData = downloadedImages[0]
 
+    const pathOrUrlDesc = this.isLocalResultsStorage ? 'local path' : 'URL'
+
     const totalMessage = message + '\n' +
-      `Resulting image is saved to:\n- file://${imageData.path}\n` +
+      `Resulting image is saved to:\n- ${imageData.pathOrUrl}\n` +
       (previews.length == 0 ? 
-        `Note: preview image is not shown due to message limit, but you can find the resulting image by local path.` :
+        `Note: preview image is not shown due to message limit, but you can find the resulting image by ${pathOrUrlDesc}.` :
         `Below you can see the lower quality preview image of the result.`
       )
 

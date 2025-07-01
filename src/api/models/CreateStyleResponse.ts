@@ -39,7 +39,19 @@ export interface CreateStyleResponse {
      * @type {string}
      * @memberof CreateStyleResponse
      */
+    creationTime: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateStyleResponse
+     */
     id: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CreateStyleResponse
+     */
+    isPrivate: boolean;
     /**
      * 
      * @type {ImageStyle}
@@ -54,18 +66,6 @@ export interface CreateStyleResponse {
     substyle?: ImageSubStyle;
     /**
      * 
-     * @type {string}
-     * @memberof CreateStyleResponse
-     */
-    creationTime: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CreateStyleResponse
-     */
-    isPrivate: boolean;
-    /**
-     * 
      * @type {number}
      * @memberof CreateStyleResponse
      */
@@ -78,10 +78,10 @@ export interface CreateStyleResponse {
  * Check if a given object implements the CreateStyleResponse interface.
  */
 export function instanceOfCreateStyleResponse(value: object): value is CreateStyleResponse {
-    if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('style' in value) || value['style'] === undefined) return false;
     if (!('creationTime' in value) || value['creationTime'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('isPrivate' in value) || value['isPrivate'] === undefined) return false;
+    if (!('style' in value) || value['style'] === undefined) return false;
     if (!('credits' in value) || value['credits'] === undefined) return false;
     return true;
 }
@@ -96,11 +96,11 @@ export function CreateStyleResponseFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
+        'creationTime': json['creation_time'],
         'id': json['id'],
+        'isPrivate': json['is_private'],
         'style': ImageStyleFromJSON(json['style']),
         'substyle': json['substyle'] == null ? undefined : ImageSubStyleFromJSON(json['substyle']),
-        'creationTime': json['creation_time'],
-        'isPrivate': json['is_private'],
         'credits': json['credits'],
     };
 }
@@ -116,11 +116,11 @@ export function CreateStyleResponseToJSONTyped(value?: CreateStyleResponse | nul
 
     return {
         
+        'creation_time': value['creationTime'],
         'id': value['id'],
+        'is_private': value['isPrivate'],
         'style': ImageStyleToJSON(value['style']),
         'substyle': ImageSubStyleToJSON(value['substyle']),
-        'creation_time': value['creationTime'],
-        'is_private': value['isPrivate'],
         'credits': value['credits'],
     };
 }

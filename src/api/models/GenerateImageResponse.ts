@@ -35,16 +35,16 @@ export interface GenerateImageResponse {
     created: number;
     /**
      * 
-     * @type {Array<Image>}
-     * @memberof GenerateImageResponse
-     */
-    data: Array<Image>;
-    /**
-     * 
      * @type {number}
      * @memberof GenerateImageResponse
      */
     credits: number;
+    /**
+     * 
+     * @type {Array<Image>}
+     * @memberof GenerateImageResponse
+     */
+    data: Array<Image>;
 }
 
 /**
@@ -52,8 +52,8 @@ export interface GenerateImageResponse {
  */
 export function instanceOfGenerateImageResponse(value: object): value is GenerateImageResponse {
     if (!('created' in value) || value['created'] === undefined) return false;
-    if (!('data' in value) || value['data'] === undefined) return false;
     if (!('credits' in value) || value['credits'] === undefined) return false;
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 
@@ -68,8 +68,8 @@ export function GenerateImageResponseFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'created': json['created'],
-        'data': ((json['data'] as Array<any>).map(ImageFromJSON)),
         'credits': json['credits'],
+        'data': ((json['data'] as Array<any>).map(ImageFromJSON)),
     };
 }
 
@@ -85,8 +85,8 @@ export function GenerateImageResponseToJSONTyped(value?: GenerateImageResponse |
     return {
         
         'created': value['created'],
-        'data': ((value['data'] as Array<any>).map(ImageToJSON)),
         'credits': value['credits'],
+        'data': ((value['data'] as Array<any>).map(ImageToJSON)),
     };
 }
 

@@ -21,10 +21,10 @@ import { mapValues } from '../runtime';
 export interface User {
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof User
      */
-    id: string;
+    credits: number;
     /**
      * 
      * @type {string}
@@ -36,21 +36,21 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    name?: string;
+    id: string;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof User
      */
-    credits: number;
+    name?: string;
 }
 
 /**
  * Check if a given object implements the User interface.
  */
 export function instanceOfUser(value: object): value is User {
-    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('credits' in value) || value['credits'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
     return true;
 }
 
@@ -64,10 +64,10 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
     }
     return {
         
-        'id': json['id'],
-        'email': json['email'] == null ? undefined : json['email'],
-        'name': json['name'] == null ? undefined : json['name'],
         'credits': json['credits'],
+        'email': json['email'] == null ? undefined : json['email'],
+        'id': json['id'],
+        'name': json['name'] == null ? undefined : json['name'],
     };
 }
 
@@ -82,10 +82,10 @@ export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolea
 
     return {
         
-        'id': value['id'],
-        'email': value['email'],
-        'name': value['name'],
         'credits': value['credits'],
+        'email': value['email'],
+        'id': value['id'],
+        'name': value['name'],
     };
 }
 

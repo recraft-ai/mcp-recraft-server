@@ -13,7 +13,7 @@ export const replaceBackgroundTool = {
     "You should provide the same style/substyle/styleID settings as were used for input image generation (if exists) if there are no specific requirements to change the style.\n" +
     "Other parameters are recommended to keep default if you don't have any specific requirements on them.\n" +
     "You can use styles to refine the image background generation, and also to generate raster or vector images.\n" +
-    "Generated images will be saved to local storage, paths to them and their previews will be returned in the response.",
+    "Local paths or URLs to generated images and their previews will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
@@ -62,6 +62,7 @@ export const replaceBackgroundHandler = async (server: RecraftServer, args: Reco
       styleId: styleID,
       responseFormat: 'url',
       n: numberOfImages,
+      expire: server.isLocalResultsStorage,
     })
 
     return await server.transformGenerateImageResponseToCallToolResult(result)

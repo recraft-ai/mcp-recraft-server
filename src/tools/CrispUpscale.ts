@@ -10,7 +10,7 @@ export const crispUpscaleTool = {
   description: "Crisp upscale of the input image using Recraft AI.\n" +
     "This operation takes an input image and returns an upscaled image, making the image sharper and cleaner.\n" +
     "This version of upscale is much cheaper and faster than creative upscale.\n" +
-    "Resulting image will be saved to local storage, path to it and its preview will be returned in the response.",
+    "Local path or URL to resulting image and its preview will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
@@ -31,6 +31,7 @@ export const crispUpscaleHandler = async (server: RecraftServer, args: Record<st
     const result = await server.api.imageApi.crispUpscale({
       image: await imageDataToBlob(imageData),
       responseFormat: 'url',
+      expire: server.isLocalResultsStorage,
     })
 
     return await server.transformSingleImageOperationToCallToolResult(result.image, 'Crisp upscale completed.')

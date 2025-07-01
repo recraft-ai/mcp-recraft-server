@@ -35,16 +35,16 @@ export interface ProcessImageResponse {
     created: number;
     /**
      * 
-     * @type {Image}
-     * @memberof ProcessImageResponse
-     */
-    image: Image;
-    /**
-     * 
      * @type {number}
      * @memberof ProcessImageResponse
      */
     credits: number;
+    /**
+     * 
+     * @type {Image}
+     * @memberof ProcessImageResponse
+     */
+    image: Image;
 }
 
 /**
@@ -52,8 +52,8 @@ export interface ProcessImageResponse {
  */
 export function instanceOfProcessImageResponse(value: object): value is ProcessImageResponse {
     if (!('created' in value) || value['created'] === undefined) return false;
-    if (!('image' in value) || value['image'] === undefined) return false;
     if (!('credits' in value) || value['credits'] === undefined) return false;
+    if (!('image' in value) || value['image'] === undefined) return false;
     return true;
 }
 
@@ -68,8 +68,8 @@ export function ProcessImageResponseFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'created': json['created'],
-        'image': ImageFromJSON(json['image']),
         'credits': json['credits'],
+        'image': ImageFromJSON(json['image']),
     };
 }
 
@@ -85,8 +85,8 @@ export function ProcessImageResponseToJSONTyped(value?: ProcessImageResponse | n
     return {
         
         'created': value['created'],
-        'image': ImageToJSON(value['image']),
         'credits': value['credits'],
+        'image': ImageToJSON(value['image']),
     };
 }
 

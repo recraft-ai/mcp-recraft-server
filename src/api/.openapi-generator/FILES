@@ -6,8 +6,6 @@ apis/index.ts
 index.ts
 models/BasicStyle.ts
 models/CreateStyleResponse.ts
-models/DescribeImageRequest.ts
-models/DescribeImageResponse.ts
 models/GenerateImageRequest.ts
 models/GenerateImageResponse.ts
 models/Image.ts

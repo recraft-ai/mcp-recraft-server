@@ -22,6 +22,8 @@ export const TransformModel = {
     Recraft20b: 'recraft20b',
     Recraftv2: 'recraftv2',
     Recraftv3: 'recraftv3',
+    Flux1KontextPro: 'flux1_kontext_pro',
+    Flux1KontextMax: 'flux1_kontext_max',
     Flux11pro: 'flux1_1pro',
     Flux1dev: 'flux1dev',
     Imagen3: 'imagen3',

@@ -9,7 +9,7 @@ export const vectorizeImageTool = {
   name: "vectorize_image",
   description: "Vectorize an input image using Recraft AI.\n" +
    "This operation takes an input image and returns a vector SVG image, close to it.\n" +
-   "Resulting image will be saved to local storage, path to it and its preview will be returned in the response.",
+   "Local path or URL to resulting image and its preview will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
@@ -30,6 +30,7 @@ export const vectorizeImageHandler = async (server: RecraftServer, args: Record<
     const result = await server.api.imageApi.vectorizeImage({
       image: await imageDataToBlob(imageData),
       responseFormat: 'url',
+      expire: server.isLocalResultsStorage,
     })
 
     return await server.transformSingleImageOperationToCallToolResult(result.image, 'Vectorized given image.')
