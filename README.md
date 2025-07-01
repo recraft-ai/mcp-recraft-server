@@ -63,7 +63,7 @@ Modify your `claude_desktop_config.json` file to add the following:
       ],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
-        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORATE_INDICATOR>",
+        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORAGE_INDICATOR>",
         "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
@@ -96,7 +96,7 @@ Modify your `claude_desktop_config.json` file to add the following:
       "args": ["<ABSOLUTE_PATH_TO_CLONED_DIRECTORY>/dist/index.js"],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
-        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORATE_INDICATOR>",
+        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORAGE_INDICATOR>",
         "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
