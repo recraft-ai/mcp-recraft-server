@@ -39,7 +39,19 @@ export interface Style {
      * @type {string}
      * @memberof Style
      */
+    creationTime: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Style
+     */
     id: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Style
+     */
+    isPrivate: boolean;
     /**
      * 
      * @type {ImageStyle}
@@ -52,18 +64,6 @@ export interface Style {
      * @memberof Style
      */
     substyle?: ImageSubStyle;
-    /**
-     * 
-     * @type {string}
-     * @memberof Style
-     */
-    creationTime: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Style
-     */
-    isPrivate: boolean;
 }
 
 
@@ -72,10 +72,10 @@ export interface Style {
  * Check if a given object implements the Style interface.
  */
 export function instanceOfStyle(value: object): value is Style {
-    if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('style' in value) || value['style'] === undefined) return false;
     if (!('creationTime' in value) || value['creationTime'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('isPrivate' in value) || value['isPrivate'] === undefined) return false;
+    if (!('style' in value) || value['style'] === undefined) return false;
     return true;
 }
 
@@ -89,11 +89,11 @@ export function StyleFromJSONTyped(json: any, ignoreDiscriminator: boolean): Sty
     }
     return {
         
+        'creationTime': json['creation_time'],
         'id': json['id'],
+        'isPrivate': json['is_private'],
         'style': ImageStyleFromJSON(json['style']),
         'substyle': json['substyle'] == null ? undefined : ImageSubStyleFromJSON(json['substyle']),
-        'creationTime': json['creation_time'],
-        'isPrivate': json['is_private'],
     };
 }
 
@@ -108,11 +108,11 @@ export function StyleToJSONTyped(value?: Style | null, ignoreDiscriminator: bool
 
     return {
         
+        'creation_time': value['creationTime'],
         'id': value['id'],
+        'is_private': value['isPrivate'],
         'style': ImageStyleToJSON(value['style']),
         'substyle': ImageSubStyleToJSON(value['substyle']),
-        'creation_time': value['creationTime'],
-        'is_private': value['isPrivate'],
     };
 }
 

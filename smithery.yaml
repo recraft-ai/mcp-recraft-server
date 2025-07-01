@@ -8,9 +8,6 @@ startCommand:
       RECRAFT_API_KEY:
         type: string
         description: 'Your Recraft AI API key. Get one at https://www.recraft.ai/profile/api'
-      IMAGE_STORAGE_DIRECTORY:
-        type: string
-        description: 'Local path (absolute) where generated images will be saved, for example: /Users/username/recraft-images'
   commandFunction:
     |-
     (config) => ({
@@ -18,6 +15,6 @@ startCommand:
       args: ['dist/index.js'],
       env: {
         RECRAFT_API_KEY: config.RECRAFT_API_KEY,
-        IMAGE_STORAGE_DIRECTORY: config.IMAGE_STORAGE_DIRECTORY
+        RECRAFT_REMOTE_RESULTS_STORAGE: "1"
       }
     })

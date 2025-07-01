@@ -24,21 +24,21 @@ export interface SystemStatus {
      * @type {boolean}
      * @memberof SystemStatus
      */
-    service: boolean;
+    generation: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof SystemStatus
      */
-    generation: boolean;
+    service: boolean;
 }
 
 /**
  * Check if a given object implements the SystemStatus interface.
  */
 export function instanceOfSystemStatus(value: object): value is SystemStatus {
-    if (!('service' in value) || value['service'] === undefined) return false;
     if (!('generation' in value) || value['generation'] === undefined) return false;
+    if (!('service' in value) || value['service'] === undefined) return false;
     return true;
 }
 
@@ -52,8 +52,8 @@ export function SystemStatusFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'service': json['service'],
         'generation': json['generation'],
+        'service': json['service'],
     };
 }
 
@@ -68,8 +68,8 @@ export function SystemStatusToJSONTyped(value?: SystemStatus | null, ignoreDiscr
 
     return {
         
-        'service': value['service'],
         'generation': value['generation'],
+        'service': value['service'],
     };
 }
 

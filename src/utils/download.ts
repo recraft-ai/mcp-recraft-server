@@ -17,7 +17,7 @@ export const downloadImage = async (imageUrl: string): Promise<ImageData> => {
   } else {
     const response = await fetch(imageUrl)
     if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.statusText}`)
+      throw new Error(`Failed to fetch image: ${response.statusText}, URL: ${imageUrl}`)
     }
   
     const arrayBuffer = await response.arrayBuffer()

@@ -7,7 +7,7 @@ import { uploadImage } from "./upload"
 const MESSAGE_LIMIT = Math.round(1048576 * 0.95)
 const MIN_SIDE_LENGTH = 128
 
-export const downloadImagesAndMakePreviews = async (imageStorageDirectory: string, images: Image[]) => {
+export const downloadImagesAndMakePreviews = async (imageStorageDirectory: string | undefined, images: Image[]) => {
   const imagePromises = images.map(async (imageData) => {
     if (!imageData?.url) {
       return null
@@ -16,7 +16,14 @@ export const downloadImagesAndMakePreviews = async (imageStorageDirectory: strin
     const imageUrl = imageData.url
     const id = imageData.imageId
     const image = await downloadImage(imageUrl)
-    const path = await uploadImage(imageStorageDirectory, id, image)
+
+    let pathOrUrl: string
+    if (imageStorageDirectory) {
+      const path = await uploadImage(imageStorageDirectory, id, image)
+      pathOrUrl = `file://${path}`
+    } else {
+      pathOrUrl = imageUrl
+    }
 
     const imageSize = await getImageSize(image)
 
@@ -27,7 +34,7 @@ export const downloadImagesAndMakePreviews = async (imageStorageDirectory: strin
       previewData = await compressImage(image)
     }
 
-    return {...image, url: imageUrl, id, path, previewData, ...imageSize}
+    return {...image, url: imageUrl, id, pathOrUrl, previewData, ...imageSize}
   })
 
   const downloadedImages = (await Promise.all(imagePromises)).filter((image) => image !== null)

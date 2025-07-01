@@ -29,10 +29,10 @@ import {
 export interface UserControls {
     /**
      * 
-     * @type {Array<ImageColor>}
+     * @type {number}
      * @memberof UserControls
      */
-    colors?: Array<ImageColor>;
+    artisticLevel?: number;
     /**
      * 
      * @type {ImageColor}
@@ -41,10 +41,10 @@ export interface UserControls {
     backgroundColor?: ImageColor;
     /**
      * 
-     * @type {number}
+     * @type {Array<ImageColor>}
      * @memberof UserControls
      */
-    artisticLevel?: number;
+    colors?: Array<ImageColor>;
     /**
      * 
      * @type {boolean}
@@ -70,9 +70,9 @@ export function UserControlsFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'colors': json['colors'] == null ? undefined : ((json['colors'] as Array<any>).map(ImageColorFromJSON)),
-        'backgroundColor': json['background_color'] == null ? undefined : ImageColorFromJSON(json['background_color']),
         'artisticLevel': json['artistic_level'] == null ? undefined : json['artistic_level'],
+        'backgroundColor': json['background_color'] == null ? undefined : ImageColorFromJSON(json['background_color']),
+        'colors': json['colors'] == null ? undefined : ((json['colors'] as Array<any>).map(ImageColorFromJSON)),
         'noText': json['no_text'] == null ? undefined : json['no_text'],
     };
 }
@@ -88,9 +88,9 @@ export function UserControlsToJSONTyped(value?: UserControls | null, ignoreDiscr
 
     return {
         
-        'colors': value['colors'] == null ? undefined : ((value['colors'] as Array<any>).map(ImageColorToJSON)),
-        'background_color': ImageColorToJSON(value['backgroundColor']),
         'artistic_level': value['artisticLevel'],
+        'background_color': ImageColorToJSON(value['backgroundColor']),
+        'colors': value['colors'] == null ? undefined : ((value['colors'] as Array<any>).map(ImageColorToJSON)),
         'no_text': value['noText'],
     };
 }

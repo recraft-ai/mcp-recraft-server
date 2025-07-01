@@ -10,7 +10,7 @@ export const generateImageTool = {
       "You can specify the image size, style, model, and number of images to generate.\n" +
       "You don't need to change default parameters if you don't have any specific requirements.\n" +
       "You can use styles to refine the image generation, and also to generate raster or vector images.\n" +
-      "Generated images will be saved to local storage, paths to them and their previews will be returned in the response.",
+      "Local paths or URLs to generated images and their previews will be returned in the response.",
   inputSchema: {
     type: "object",
     properties: {
@@ -48,6 +48,7 @@ export const generateImageHandler = async (server: RecraftServer, args: Record<s
         model: model,
         responseFormat: 'url',
         n: numberOfImages,
+        expire: server.isLocalResultsStorage,
       }
     })
 

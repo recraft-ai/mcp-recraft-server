@@ -51,45 +51,50 @@ import {
 
 export interface ClarityUpscaleRequest {
     image: Blob;
-    responseFormat?: ResponseFormat;
+    expire?: boolean;
     imageFormat?: ImageFormat;
+    responseFormat?: ResponseFormat;
 }
 
 export interface CreativeUpscaleRequest {
     image: Blob;
-    responseFormat?: ResponseFormat;
+    expire?: boolean;
     imageFormat?: ImageFormat;
+    responseFormat?: ResponseFormat;
 }
 
 export interface CrispUpscaleRequest {
     image: Blob;
-    responseFormat?: ResponseFormat;
+    expire?: boolean;
     imageFormat?: ImageFormat;
+    responseFormat?: ResponseFormat;
 }
 
 export interface EraseRegionRequest {
     image: Blob;
     mask: Blob;
-    responseFormat?: ResponseFormat;
+    expire?: boolean;
     imageFormat?: ImageFormat;
+    responseFormat?: ResponseFormat;
 }
 
 export interface GenerateBackgroundRequest {
     image: Blob;
     prompt: string;
     mask: Blob;
-    n?: number;
-    responseFormat?: ResponseFormat;
-    imageFormat?: ImageFormat;
-    styleId?: string;
-    style?: ImageStyle;
-    substyle?: ImageSubStyle;
-    model?: TransformModel;
-    randomSeed?: number;
-    textLayout?: Array<TextLayoutItem>;
     blockNsfw?: boolean;
     calculateFeatures?: boolean;
+    expire?: boolean;
+    imageFormat?: ImageFormat;
+    model?: TransformModel;
+    n?: number;
     negativePrompt?: string;
+    randomSeed?: number;
+    responseFormat?: ResponseFormat;
+    style?: ImageStyle;
+    styleId?: string;
+    substyle?: ImageSubStyle;
+    textLayout?: Array<TextLayoutItem>;
 }
 
 export interface GenerateImageOperationRequest {
@@ -98,74 +103,80 @@ export interface GenerateImageOperationRequest {
 
 export interface GenerativeUpscaleRequest {
     image: Blob;
-    responseFormat?: ResponseFormat;
+    expire?: boolean;
     imageFormat?: ImageFormat;
+    responseFormat?: ResponseFormat;
 }
 
 export interface ImageToImageRequest {
     image: Blob;
     prompt: string;
     strength: number;
-    n?: number;
-    responseFormat?: ResponseFormat;
-    imageFormat?: ImageFormat;
-    styleId?: string;
-    style?: ImageStyle;
-    substyle?: ImageSubStyle;
-    controls?: UserControls;
-    model?: TransformModel;
-    randomSeed?: number;
-    textLayout?: Array<TextLayoutItem>;
     blockNsfw?: boolean;
     calculateFeatures?: boolean;
+    controls?: UserControls;
+    expire?: boolean;
+    imageFormat?: ImageFormat;
+    model?: TransformModel;
+    n?: number;
     negativePrompt?: string;
+    randomSeed?: number;
+    responseFormat?: ResponseFormat;
+    style?: ImageStyle;
+    styleId?: string;
+    substyle?: ImageSubStyle;
+    textLayout?: Array<TextLayoutItem>;
 }
 
 export interface InpaintImageRequest {
     image: Blob;
     prompt: string;
     mask: Blob;
-    n?: number;
-    responseFormat?: ResponseFormat;
-    imageFormat?: ImageFormat;
-    styleId?: string;
-    style?: ImageStyle;
-    substyle?: ImageSubStyle;
-    model?: TransformModel;
-    randomSeed?: number;
-    textLayout?: Array<TextLayoutItem>;
     blockNsfw?: boolean;
     calculateFeatures?: boolean;
+    expire?: boolean;
+    imageFormat?: ImageFormat;
+    model?: TransformModel;
+    n?: number;
     negativePrompt?: string;
+    randomSeed?: number;
+    responseFormat?: ResponseFormat;
+    style?: ImageStyle;
+    styleId?: string;
+    substyle?: ImageSubStyle;
+    textLayout?: Array<TextLayoutItem>;
 }
 
 export interface RemoveBackgroundRequest {
     image: Blob;
-    responseFormat?: ResponseFormat;
+    expire?: boolean;
     imageFormat?: ImageFormat;
+    responseFormat?: ResponseFormat;
 }
 
 export interface ReplaceBackgroundRequest {
     image: Blob;
     prompt: string;
-    n?: number;
-    responseFormat?: ResponseFormat;
-    imageFormat?: ImageFormat;
-    styleId?: string;
-    style?: ImageStyle;
-    substyle?: ImageSubStyle;
-    model?: TransformModel;
-    randomSeed?: number;
-    textLayout?: Array<TextLayoutItem>;
     blockNsfw?: boolean;
     calculateFeatures?: boolean;
+    expire?: boolean;
+    imageFormat?: ImageFormat;
+    model?: TransformModel;
+    n?: number;
     negativePrompt?: string;
+    randomSeed?: number;
+    responseFormat?: ResponseFormat;
+    style?: ImageStyle;
+    styleId?: string;
+    substyle?: ImageSubStyle;
+    textLayout?: Array<TextLayoutItem>;
 }
 
 export interface VectorizeImageRequest {
     image: Blob;
-    responseFormat?: ResponseFormat;
+    expire?: boolean;
     imageFormat?: ImageFormat;
+    responseFormat?: ResponseFormat;
 }
 
 /**
@@ -213,16 +224,20 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
         }
 
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
         if (requestParameters['imageFormat'] != null) {
             formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
         }
 
         const response = await this.request({
@@ -284,16 +299,20 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
         }
 
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
         if (requestParameters['imageFormat'] != null) {
             formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
         }
 
         const response = await this.request({
@@ -354,16 +373,20 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
         }
 
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
         if (requestParameters['imageFormat'] != null) {
             formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
         }
 
         const response = await this.request({
@@ -433,8 +456,16 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['imageFormat'] != null) {
+            formParams.append('image_format', requestParameters['imageFormat'] as any);
         }
 
         if (requestParameters['mask'] != null) {
@@ -443,10 +474,6 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['responseFormat'] != null) {
             formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
-        if (requestParameters['imageFormat'] != null) {
-            formParams.append('image_format', requestParameters['imageFormat'] as any);
         }
 
         const response = await this.request({
@@ -523,50 +550,6 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
-        if (requestParameters['image'] != null) {
-            formParams.append('image', requestParameters['image'] as any);
-        }
-
-        if (requestParameters['prompt'] != null) {
-            formParams.append('prompt', requestParameters['prompt'] as any);
-        }
-
-        if (requestParameters['n'] != null) {
-            formParams.append('n', requestParameters['n'] as any);
-        }
-
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
-        if (requestParameters['imageFormat'] != null) {
-            formParams.append('image_format', requestParameters['imageFormat'] as any);
-        }
-
-        if (requestParameters['styleId'] != null) {
-            formParams.append('style_id', requestParameters['styleId'] as any);
-        }
-
-        if (requestParameters['style'] != null) {
-            formParams.append('style', requestParameters['style'] as any);
-        }
-
-        if (requestParameters['substyle'] != null) {
-            formParams.append('substyle', requestParameters['substyle'] as any);
-        }
-
-        if (requestParameters['model'] != null) {
-            formParams.append('model', requestParameters['model'] as any);
-        }
-
-        if (requestParameters['randomSeed'] != null) {
-            formParams.append('random_seed', requestParameters['randomSeed'] as any);
-        }
-
-        if (requestParameters['textLayout'] != null) {
-            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
-        }
-
         if (requestParameters['blockNsfw'] != null) {
             formParams.append('block_nsfw', requestParameters['blockNsfw'] as any);
         }
@@ -575,8 +558,56 @@ export class ImageApi extends runtime.BaseAPI {
             formParams.append('calculate_features', requestParameters['calculateFeatures'] as any);
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['imageFormat'] != null) {
+            formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['model'] != null) {
+            formParams.append('model', requestParameters['model'] as any);
+        }
+
+        if (requestParameters['n'] != null) {
+            formParams.append('n', requestParameters['n'] as any);
+        }
+
         if (requestParameters['negativePrompt'] != null) {
             formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt'] as any);
+        }
+
+        if (requestParameters['randomSeed'] != null) {
+            formParams.append('random_seed', requestParameters['randomSeed'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
+        }
+
+        if (requestParameters['style'] != null) {
+            formParams.append('style', requestParameters['style'] as any);
+        }
+
+        if (requestParameters['styleId'] != null) {
+            formParams.append('style_id', requestParameters['styleId'] as any);
+        }
+
+        if (requestParameters['substyle'] != null) {
+            formParams.append('substyle', requestParameters['substyle'] as any);
+        }
+
+        if (requestParameters['textLayout'] != null) {
+            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
         }
 
         if (requestParameters['mask'] != null) {
@@ -679,16 +710,20 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
         }
 
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
         if (requestParameters['imageFormat'] != null) {
             formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
         }
 
         const response = await this.request({
@@ -764,58 +799,6 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
-        if (requestParameters['image'] != null) {
-            formParams.append('image', requestParameters['image'] as any);
-        }
-
-        if (requestParameters['prompt'] != null) {
-            formParams.append('prompt', requestParameters['prompt'] as any);
-        }
-
-        if (requestParameters['strength'] != null) {
-            formParams.append('strength', requestParameters['strength'] as any);
-        }
-
-        if (requestParameters['n'] != null) {
-            formParams.append('n', requestParameters['n'] as any);
-        }
-
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
-        if (requestParameters['imageFormat'] != null) {
-            formParams.append('image_format', requestParameters['imageFormat'] as any);
-        }
-
-        if (requestParameters['styleId'] != null) {
-            formParams.append('style_id', requestParameters['styleId'] as any);
-        }
-
-        if (requestParameters['style'] != null) {
-            formParams.append('style', requestParameters['style'] as any);
-        }
-
-        if (requestParameters['substyle'] != null) {
-            formParams.append('substyle', requestParameters['substyle'] as any);
-        }
-
-        if (requestParameters['controls'] != null) {
-            formParams.append('controls', new Blob([JSON.stringify(GenerateImageResponseToJSON(requestParameters['controls']))], { type: "application/json", }));
-                    }
-
-        if (requestParameters['model'] != null) {
-            formParams.append('model', requestParameters['model'] as any);
-        }
-
-        if (requestParameters['randomSeed'] != null) {
-            formParams.append('random_seed', requestParameters['randomSeed'] as any);
-        }
-
-        if (requestParameters['textLayout'] != null) {
-            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
-        }
-
         if (requestParameters['blockNsfw'] != null) {
             formParams.append('block_nsfw', requestParameters['blockNsfw'] as any);
         }
@@ -824,8 +807,64 @@ export class ImageApi extends runtime.BaseAPI {
             formParams.append('calculate_features', requestParameters['calculateFeatures'] as any);
         }
 
+        if (requestParameters['controls'] != null) {
+            formParams.append('controls', new Blob([JSON.stringify(GenerateImageResponseToJSON(requestParameters['controls']))], { type: "application/json", }));
+                    }
+
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['imageFormat'] != null) {
+            formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['model'] != null) {
+            formParams.append('model', requestParameters['model'] as any);
+        }
+
+        if (requestParameters['n'] != null) {
+            formParams.append('n', requestParameters['n'] as any);
+        }
+
         if (requestParameters['negativePrompt'] != null) {
             formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt'] as any);
+        }
+
+        if (requestParameters['randomSeed'] != null) {
+            formParams.append('random_seed', requestParameters['randomSeed'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
+        }
+
+        if (requestParameters['strength'] != null) {
+            formParams.append('strength', requestParameters['strength'] as any);
+        }
+
+        if (requestParameters['style'] != null) {
+            formParams.append('style', requestParameters['style'] as any);
+        }
+
+        if (requestParameters['styleId'] != null) {
+            formParams.append('style_id', requestParameters['styleId'] as any);
+        }
+
+        if (requestParameters['substyle'] != null) {
+            formParams.append('substyle', requestParameters['substyle'] as any);
+        }
+
+        if (requestParameters['textLayout'] != null) {
+            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
         }
 
         const response = await this.request({
@@ -902,50 +941,6 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
-        if (requestParameters['image'] != null) {
-            formParams.append('image', requestParameters['image'] as any);
-        }
-
-        if (requestParameters['prompt'] != null) {
-            formParams.append('prompt', requestParameters['prompt'] as any);
-        }
-
-        if (requestParameters['n'] != null) {
-            formParams.append('n', requestParameters['n'] as any);
-        }
-
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
-        if (requestParameters['imageFormat'] != null) {
-            formParams.append('image_format', requestParameters['imageFormat'] as any);
-        }
-
-        if (requestParameters['styleId'] != null) {
-            formParams.append('style_id', requestParameters['styleId'] as any);
-        }
-
-        if (requestParameters['style'] != null) {
-            formParams.append('style', requestParameters['style'] as any);
-        }
-
-        if (requestParameters['substyle'] != null) {
-            formParams.append('substyle', requestParameters['substyle'] as any);
-        }
-
-        if (requestParameters['model'] != null) {
-            formParams.append('model', requestParameters['model'] as any);
-        }
-
-        if (requestParameters['randomSeed'] != null) {
-            formParams.append('random_seed', requestParameters['randomSeed'] as any);
-        }
-
-        if (requestParameters['textLayout'] != null) {
-            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
-        }
-
         if (requestParameters['blockNsfw'] != null) {
             formParams.append('block_nsfw', requestParameters['blockNsfw'] as any);
         }
@@ -954,8 +949,56 @@ export class ImageApi extends runtime.BaseAPI {
             formParams.append('calculate_features', requestParameters['calculateFeatures'] as any);
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['imageFormat'] != null) {
+            formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['model'] != null) {
+            formParams.append('model', requestParameters['model'] as any);
+        }
+
+        if (requestParameters['n'] != null) {
+            formParams.append('n', requestParameters['n'] as any);
+        }
+
         if (requestParameters['negativePrompt'] != null) {
             formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt'] as any);
+        }
+
+        if (requestParameters['randomSeed'] != null) {
+            formParams.append('random_seed', requestParameters['randomSeed'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
+        }
+
+        if (requestParameters['style'] != null) {
+            formParams.append('style', requestParameters['style'] as any);
+        }
+
+        if (requestParameters['styleId'] != null) {
+            formParams.append('style_id', requestParameters['styleId'] as any);
+        }
+
+        if (requestParameters['substyle'] != null) {
+            formParams.append('substyle', requestParameters['substyle'] as any);
+        }
+
+        if (requestParameters['textLayout'] != null) {
+            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
         }
 
         if (requestParameters['mask'] != null) {
@@ -1020,16 +1063,20 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
         }
 
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
         if (requestParameters['imageFormat'] != null) {
             formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
         }
 
         const response = await this.request({
@@ -1097,50 +1144,6 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
-        if (requestParameters['image'] != null) {
-            formParams.append('image', requestParameters['image'] as any);
-        }
-
-        if (requestParameters['prompt'] != null) {
-            formParams.append('prompt', requestParameters['prompt'] as any);
-        }
-
-        if (requestParameters['n'] != null) {
-            formParams.append('n', requestParameters['n'] as any);
-        }
-
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
-        if (requestParameters['imageFormat'] != null) {
-            formParams.append('image_format', requestParameters['imageFormat'] as any);
-        }
-
-        if (requestParameters['styleId'] != null) {
-            formParams.append('style_id', requestParameters['styleId'] as any);
-        }
-
-        if (requestParameters['style'] != null) {
-            formParams.append('style', requestParameters['style'] as any);
-        }
-
-        if (requestParameters['substyle'] != null) {
-            formParams.append('substyle', requestParameters['substyle'] as any);
-        }
-
-        if (requestParameters['model'] != null) {
-            formParams.append('model', requestParameters['model'] as any);
-        }
-
-        if (requestParameters['randomSeed'] != null) {
-            formParams.append('random_seed', requestParameters['randomSeed'] as any);
-        }
-
-        if (requestParameters['textLayout'] != null) {
-            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
-        }
-
         if (requestParameters['blockNsfw'] != null) {
             formParams.append('block_nsfw', requestParameters['blockNsfw'] as any);
         }
@@ -1149,8 +1152,56 @@ export class ImageApi extends runtime.BaseAPI {
             formParams.append('calculate_features', requestParameters['calculateFeatures'] as any);
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['imageFormat'] != null) {
+            formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['model'] != null) {
+            formParams.append('model', requestParameters['model'] as any);
+        }
+
+        if (requestParameters['n'] != null) {
+            formParams.append('n', requestParameters['n'] as any);
+        }
+
         if (requestParameters['negativePrompt'] != null) {
             formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt'] as any);
+        }
+
+        if (requestParameters['randomSeed'] != null) {
+            formParams.append('random_seed', requestParameters['randomSeed'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
+        }
+
+        if (requestParameters['style'] != null) {
+            formParams.append('style', requestParameters['style'] as any);
+        }
+
+        if (requestParameters['styleId'] != null) {
+            formParams.append('style_id', requestParameters['styleId'] as any);
+        }
+
+        if (requestParameters['substyle'] != null) {
+            formParams.append('substyle', requestParameters['substyle'] as any);
+        }
+
+        if (requestParameters['textLayout'] != null) {
+            formParams.append('text_layout', requestParameters['textLayout']!.join(runtime.COLLECTION_FORMATS["csv"]));
         }
 
         const response = await this.request({
@@ -1211,16 +1262,20 @@ export class ImageApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
+        if (requestParameters['expire'] != null) {
+            formParams.append('expire', requestParameters['expire'] as any);
+        }
+
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
         }
 
-        if (requestParameters['responseFormat'] != null) {
-            formParams.append('response_format', requestParameters['responseFormat'] as any);
-        }
-
         if (requestParameters['imageFormat'] != null) {
             formParams.append('image_format', requestParameters['imageFormat'] as any);
+        }
+
+        if (requestParameters['responseFormat'] != null) {
+            formParams.append('response_format', requestParameters['responseFormat'] as any);
         }
 
         const response = await this.request({

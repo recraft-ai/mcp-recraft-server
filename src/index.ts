@@ -22,7 +22,7 @@ import { getUserHandler, getUserTool } from "./tools/GetUser"
 const server = new Server(
   {
     name: 'mcp-recraft-server',
-    version: '1.2.1',
+    version: '1.3.0',
   },
   {
     capabilities: {
@@ -31,7 +31,12 @@ const server = new Server(
   },
 )
 
-if (!process.env.IMAGE_STORAGE_DIRECTORY) {
+const remoteResultsStorage = process.env.RECRAFT_REMOTE_RESULTS_STORAGE === "1"
+if (!remoteResultsStorage) {
+  throw new Error("OHUEL?")
+}
+
+if (!remoteResultsStorage && !process.env.IMAGE_STORAGE_DIRECTORY) {
   try {
     process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.homedir(), ".mcp-recraft-server")
   } catch (error) {
@@ -56,7 +61,10 @@ const apiConfig = new Configuration({
 })
 const api = createRecraftApi(apiConfig)
 
-const recraftServer = new RecraftServer(api, process.env.IMAGE_STORAGE_DIRECTORY)
+const recraftServer = new RecraftServer(
+  api,
+  remoteResultsStorage ? undefined : process.env.IMAGE_STORAGE_DIRECTORY
+)
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {

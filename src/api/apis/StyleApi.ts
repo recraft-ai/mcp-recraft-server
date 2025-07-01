@@ -105,12 +105,12 @@ export class StyleApi extends runtime.BaseAPI {
             })
         }
 
-        if (requestParameters['style'] != null) {
-            formParams.append('style', requestParameters['style'] as any);
-        }
-
         if (requestParameters['_private'] != null) {
             formParams.append('private', requestParameters['_private'] as any);
+        }
+
+        if (requestParameters['style'] != null) {
+            formParams.append('style', requestParameters['style'] as any);
         }
 
         const response = await this.request({

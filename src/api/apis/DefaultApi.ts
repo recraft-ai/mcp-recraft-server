@@ -28,6 +28,37 @@ import {
 export class DefaultApi extends runtime.BaseAPI {
 
     /**
+     */
+    async getPingRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("auth0", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/ping`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async getPing(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.getPingRaw(initOverrides);
+    }
+
+    /**
      * Get System Status
      */
     async getSystemStatusRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SystemStatus>> {
@@ -59,37 +90,6 @@ export class DefaultApi extends runtime.BaseAPI {
     async getSystemStatus(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SystemStatus> {
         const response = await this.getSystemStatusRaw(initOverrides);
         return await response.value();
-    }
-
-    /**
-     */
-    async pingGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("auth0", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/ping`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async pingGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.pingGetRaw(initOverrides);
     }
 
 }

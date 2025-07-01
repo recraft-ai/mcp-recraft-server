@@ -21,24 +21,24 @@ import { mapValues } from '../runtime';
 export interface TextLayoutItem {
     /**
      * 
-     * @type {string}
-     * @memberof TextLayoutItem
-     */
-    text: string;
-    /**
-     * 
      * @type {Array<Array<number>>}
      * @memberof TextLayoutItem
      */
     bbox: Array<Array<number>>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TextLayoutItem
+     */
+    text: string;
 }
 
 /**
  * Check if a given object implements the TextLayoutItem interface.
  */
 export function instanceOfTextLayoutItem(value: object): value is TextLayoutItem {
-    if (!('text' in value) || value['text'] === undefined) return false;
     if (!('bbox' in value) || value['bbox'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 
@@ -52,8 +52,8 @@ export function TextLayoutItemFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'text': json['text'],
         'bbox': json['bbox'],
+        'text': json['text'],
     };
 }
 
@@ -68,8 +68,8 @@ export function TextLayoutItemToJSONTyped(value?: TextLayoutItem | null, ignoreD
 
     return {
         
-        'text': value['text'],
         'bbox': value['bbox'],
+        'text': value['text'],
     };
 }
 
