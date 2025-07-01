@@ -7,6 +7,9 @@
   <img src="https://badge.mcpx.dev?type=server" title="MCP Server"/>
   <img src="https://img.shields.io/npm/v/@recraft-ai/mcp-recraft-server" alt="npm version"/>
   <img src="https://img.shields.io/npm/dw/@recraft-ai/mcp-recraft-server" alt="npm downloads"/>
+  <a href="https://smithery.ai/server/@recraft-ai/mcp-recraft-server">
+    <img src="https://smithery.ai/badge/@recraft-ai/mcp-recraft-server" alt="smithery badge">
+  </a>
 </div>
 
 This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
@@ -48,6 +51,10 @@ You can find the detailed explanation of tools, their parameters, and prices in 
 
 - You will need to have some MCP client installed, for example [Claude Desktop](https://claude.ai/download).
 
+### Smithery
+
+You can find this MCP Server on [Smithery](https://smithery.ai/server/@recraft-ai/mcp-recraft-server). If this MCP is installed from Smithery then all generation results will be stored remotely and URLs to them will be returned. Use Manual setup to store generation results on your local device.
+
 ### Manual setup
 
 Modify your `claude_desktop_config.json` file to add the following:
@@ -63,8 +70,7 @@ Modify your `claude_desktop_config.json` file to add the following:
       ],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
-        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>",
-        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORAGE_INDICATOR>"
+        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
   }
@@ -96,8 +102,7 @@ Modify your `claude_desktop_config.json` file to add the following:
       "args": ["<ABSOLUTE_PATH_TO_CLONED_DIRECTORY>/dist/index.js"],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
-        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>",
-        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORAGE_INDICATOR>"
+        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
       }
     }
   }
@@ -107,5 +112,4 @@ Modify your `claude_desktop_config.json` file to add the following:
 You can specify these parameters:
 
 - `RECRAFT_API_KEY`: mandatory parameter, your [Recraft AI API](https://www.recraft.ai/profile/api) key.
-- `IMAGE_STORAGE_DIRECTORY`: optional parameter, you can specify the directory in which all generated images will be stored. By default this directory is `$HOME_DIR/.mcp-recraft-server`. If `RECRAFT_REMOTE_RESULTS_STORAGE="1"`, the value of this parameter is ignored.
-- `RECRAFT_REMOTE_RESULTS_STORAGE`: optional parameter, you can set the value to `"1"`, in this case all generated images will be stored remotely and their URLs will be returned. Also, `IMAGE_STORAGE_DIRECTORY` will be ignored in this case.
+- `IMAGE_STORAGE_DIRECTORY`: optional parameter, you can specify the directory in which all generated images will be stored. By default this directory is `$HOME_DIR/.mcp-recraft-server`.
