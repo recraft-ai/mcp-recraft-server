@@ -14,6 +14,10 @@
 
 This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
 
+<a href="https://glama.ai/mcp/servers/@recraft-ai/mcp-recraft-server">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@recraft-ai/mcp-recraft-server/badge" alt="Recraft AI Server MCP server" />
+</a>
+
 - raster and vector images generation
 - raster and vector images editing
 - creating custom styles and generating images in them
