@@ -1,0 +1,112 @@
+{
+  "dxt_version": "0.1",
+  "name": "Recraft AI",
+  "version": "1.5.0",
+  "description": "Generate and edit images using Recraft AI",
+  "long_description": "This is MCP Server integrating MCP Clients with Recraft AI raster and vector image operations: image generation and editing, creating custom styles and generating images in them, vectorization of raster images, image background removal and replacement, image upscaling.",
+  "author": {
+    "name": "Recraft AI",
+    "email": "help@recraft.ai",
+    "url": "https://recraft.ai"
+  },
+  "homepage": "https://recraft.ai",
+  "documentation": "https://www.recraft.ai/docs",
+  "support": "https://www.recraft.ai/contact",
+  "icon": "images/recraft-icon.svg",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {
+        "RECRAFT_API_KEY": "${user_config.RECRAFT_API_KEY}",
+        "IMAGE_STORAGE_DIRECTORY": "${user_config.IMAGE_STORAGE_DIRECTORY}",
+        "RECRAFT_REMOTE_RESULTS_STORAGE": "${user_config.RECRAFT_REMOTE_RESULTS_STORAGE}"
+      },
+      "platforms": {
+        "win32": {
+          "command": "node.exe"
+        }
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "generate_image",
+      "description": "Generate an image using Recraft AI from a text prompt."
+    },
+    {
+      "name": "create_style",
+      "description": "Create a style in Recraft AI from the set of style reference images."
+    },
+    {
+      "name": "vectorize_image",
+      "description": "Vectorize an input image using Recraft AI."
+    },
+    {
+      "name": "image_to_image",
+      "description": "Generate an image using Recraft AI from an input image and a text prompt."
+    },
+    {
+      "name": "remove_background",
+      "description": "Remove background in the input image using Recraft AI."
+    },
+    {
+      "name": "replace_background",
+      "description": "Generate an image using Recraft AI from an input image with its detected background replaced based on the prompt."
+    },
+    {
+      "name": "crisp_upscale",
+      "description": "Crisp upscale of the input image using Recraft AI."
+    },
+    {
+      "name": "creative_upscale",
+      "description": "Creative upscale of the input image using Recraft AI."
+    },
+    {
+      "name": "get_user",
+      "description": "Get information about the current Recraft AI API user."
+    }
+  ],
+  "user_config": {
+    "RECRAFT_API_KEY": {
+      "type": "string",
+      "title": "Recraft AI API key",
+      "description": "Recraft AI API key can be obtained at https://www.recraft.ai/profile/api",
+      "required": true,
+      "sensitive": true
+    },
+    "IMAGE_STORAGE_DIRECTORY": {
+      "type": "string",
+      "title": "Image Storage Directory",
+      "description": "Local directory where all generated images will be stored",
+      "required": false,
+      "sensitive": false,
+      "default": "${HOME}/.mcp-recraft-server"
+    },
+    "RECRAFT_REMOTE_RESULTS_STORAGE": {
+      "type": "boolean",
+      "title": "Store generated images remotely",
+      "description": "If true, generated images will be stored remotely instead of locally",
+      "required": false,
+      "sensitive": false,
+      "default": false
+    }
+  },
+  "keywords": [
+    "recraft",
+    "ai",
+    "recraft ai",
+    "image generation",
+    "image editing",
+    "image vectorization",
+    "image upscaling"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/recraft-ai/mcp-recraft-server.git"
+  }
+}

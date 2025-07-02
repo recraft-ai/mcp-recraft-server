@@ -25,14 +25,14 @@ export const downloadImagesAndMakePreviews = async (imageStorageDirectory: strin
       pathOrUrl = imageUrl
     }
 
-    const imageSize = await getImageSize(image)
-
     let previewData: ImageData
     if (image.mimeType === 'image/svg+xml') {
       previewData = await rasterizeSvg(image.data)
     } else {
       previewData = await compressImage(image)
     }
+
+    const imageSize = await getImageSize(previewData)
 
     return {...image, url: imageUrl, id, pathOrUrl, previewData, ...imageSize}
   })

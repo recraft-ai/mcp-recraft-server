@@ -22,7 +22,7 @@ import { getUserHandler, getUserTool } from "./tools/GetUser"
 const server = new Server(
   {
     name: 'mcp-recraft-server',
-    version: '1.4.0',
+    version: '1.5.0',
   },
   {
     capabilities: {
@@ -31,22 +31,24 @@ const server = new Server(
   },
 )
 
-const remoteResultsStorage = process.env.RECRAFT_REMOTE_RESULTS_STORAGE === "1"
+const remoteResultsStorage = process.env.RECRAFT_REMOTE_RESULTS_STORAGE === "1" || process.env.RECRAFT_REMOTE_RESULTS_STORAGE === "true"
 
-if (!remoteResultsStorage && !process.env.IMAGE_STORAGE_DIRECTORY) {
+let homeDir: string
+try {
+  homeDir = os.homedir()
+} catch (error) {
   try {
-    process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.homedir(), ".mcp-recraft-server")
+    homeDir = os.tmpdir()
   } catch (error) {
-    console.error("Failed to set default image storage directory:", error)
-
-    try {
-      process.env.IMAGE_STORAGE_DIRECTORY = path.join(os.tmpdir(), ".mcp-recraft-server")
-    } catch (error) {
-      console.error("Failed to set default image storage directory:", error)
-
-      process.env.IMAGE_STORAGE_DIRECTORY = ".mcp-recraft-server"
-    }
+    homeDir = ""
   }
+}
+
+if (process.env.IMAGE_STORAGE_DIRECTORY) {
+  process.env.IMAGE_STORAGE_DIRECTORY = (process.env.IMAGE_STORAGE_DIRECTORY ?? '').replace("${HOME}", homeDir)
+}
+if (!remoteResultsStorage && !process.env.IMAGE_STORAGE_DIRECTORY) {
+  process.env.IMAGE_STORAGE_DIRECTORY = path.join(homeDir, ".mcp-recraft-server")
 }
 
 const apiConfig = new Configuration({
@@ -67,9 +69,9 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       generateImageTool,
-      imageToImageTool,
       createStyleTool,
       vectorizeImageTool,
+      imageToImageTool,
       removeBackgroundTool,
       replaceBackgroundTool,
       crispUpscaleTool,
@@ -99,12 +101,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   switch (tool) {
     case generateImageTool.name:
       return await generateImageHandler(recraftServer, args ?? {})
-    case imageToImageTool.name:
-      return await imageToImageHandler(recraftServer, args ?? {})
     case createStyleTool.name:
       return await createStyleHandler(recraftServer, args ?? {})
     case vectorizeImageTool.name:
       return await vectorizeImageHandler(recraftServer, args ?? {})
+    case imageToImageTool.name:
+      return await imageToImageHandler(recraftServer, args ?? {})
     case removeBackgroundTool.name:
       return await removeBackgroundHandler(recraftServer, args ?? {})
     case replaceBackgroundTool.name:

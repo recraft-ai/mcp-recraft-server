@@ -12,7 +12,7 @@
   </a>
 </div>
 
-This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
+This is MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
 
 - raster and vector images generation
 - raster and vector images editing
@@ -30,9 +30,9 @@ In this MCP you can use the following tools:
 | Tool Name | Description | Parameters | Price |
 |-----------|-------------|------------|-------|
 | `generate_image` | Generates raster/vector images from prompt | - prompt <br/> - style <br/> - size <br/> - model <br/> - number of images | \$0.04/\$0.08 per raster/vector image |
-| `image_to_image` | Generates raster/vector images from image and prompt | - image <br/> - prompt <br/> - similarity strength <br/> - style <br/> - size <br/> - model <br/> - number of images | \$0.04/\$0.08 per raster/vector image |
 | `create_style` | Creates a style from the list of images | - list of images <br/> - basic style | \$0.04 |
 | `vectorize_image` | Vectorizes raster image | - image | \$0.01 |
+| `image_to_image` | Generates raster/vector images from image and prompt | - image <br/> - prompt <br/> - similarity strength <br/> - style <br/> - size <br/> - model <br/> - number of images | \$0.04/\$0.08 per raster/vector image |
 | `remove_background` | Removes background in image | - image | \$0.01 |
 | `replace_background` | Generates new background in image from prompt | - image <br/> - prompt for background <br/> - style <br/> - size <br/> - model <br/> - number of images | \$0.04/\$0.08 per raster/vector image |
 | `crisp_upscale` | Crisp upscale of image | - image | \$0.004 |
@@ -70,7 +70,8 @@ Modify your `claude_desktop_config.json` file to add the following:
       ],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
-        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
+        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>",
+        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORAGE_INDICATOR>"
       }
     }
   }
@@ -102,7 +103,8 @@ Modify your `claude_desktop_config.json` file to add the following:
       "args": ["<ABSOLUTE_PATH_TO_CLONED_DIRECTORY>/dist/index.js"],
       "env": {
         "RECRAFT_API_KEY": "<YOUR_RECRAFT_API_KEY>",
-        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>"
+        "IMAGE_STORAGE_DIRECTORY": "<YOUR_IMAGE_STORAGE_DIRECTORY>",
+        "RECRAFT_REMOTE_RESULTS_STORAGE": "<YOUR_REMOTE_RESULTS_STORAGE_INDICATOR>"
       }
     }
   }
@@ -112,4 +114,5 @@ Modify your `claude_desktop_config.json` file to add the following:
 You can specify these parameters:
 
 - `RECRAFT_API_KEY`: mandatory parameter, your [Recraft AI API](https://www.recraft.ai/profile/api) key.
-- `IMAGE_STORAGE_DIRECTORY`: optional parameter, you can specify the directory in which all generated images will be stored. By default this directory is `$HOME_DIR/.mcp-recraft-server`.
+- `IMAGE_STORAGE_DIRECTORY`: optional parameter, you can specify the directory in which all generated images will be stored. By default this directory is `$HOME_DIR/.mcp-recraft-server`. If `RECRAFT_REMOTE_RESULTS_STORAGE="1"`, the value of this parameter is ignored.
+- `RECRAFT_REMOTE_RESULTS_STORAGE`: optional parameter, you can set the value to `"1"`, in this case all generated images will be stored remotely and their URLs will be returned. Also, `IMAGE_STORAGE_DIRECTORY` will be ignored in this case.
