@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "name": "@recraft-ai/mcp-recraft-server",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "publishConfig": {
     "access": "public"
   },
@@ -58,7 +58,7 @@
     "@modelcontextprotocol/sdk": "^1.11.0",
     "dotenv": "^16.5.0",
     "mime-types": "^3.0.1",
-    "sharp": "^0.34.1",
+    "sharp": "^0.34.2",
     "zod": "^3.24.4"
   }
 }
