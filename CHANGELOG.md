@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.6.0...v1.6.1) (2025-07-03)
+
+
+### Bug Fixes
+
+* use package basename in dxt path ([#27](https://github.com/recraft-ai/mcp-recraft-server/issues/27)) ([d997cd5](https://github.com/recraft-ai/mcp-recraft-server/commit/d997cd503dc15e16a5d9882b74261b295f6917e5))
+
 ## [1.6.0](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.5.0...v1.6.0) (2025-07-03)
 
 
