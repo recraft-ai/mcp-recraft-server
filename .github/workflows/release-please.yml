@@ -15,4 +15,4 @@ jobs:
         with:
           config-file: .github/configs/release-please-config.json
           manifest-file: .github/configs/.release-please-manifest.json
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_RELEASE_TOKEN }}
