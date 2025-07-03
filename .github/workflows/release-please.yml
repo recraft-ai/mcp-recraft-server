@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         with:
-          config-file: .github/workflows/configs/release-please-config.json
-          manifest-file: .github/workflows/configs/.release-please-manifest.json
+          config-file: .github/configs/release-please-config.json
+          manifest-file: .github/configs/.release-please-manifest.json
           token: ${{ secrets.GITHUB_TOKEN }}
