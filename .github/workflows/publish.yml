@@ -44,9 +44,9 @@ jobs:
       - name: Build .dxt
         run: |
           npm i -g @anthropic-ai/dxt
-          NAME=$(node -p "require('./package.json').name")
+          BASENAME=$(node -p "require('./package.json').name.split('/').pop()")
           VERSION=${GITHUB_REF#refs/tags/v}
-          dxt pack . "dist/$NAME-$VERSION.dxt"
+          dxt pack . "dist/$BASENAME-$VERSION.dxt"
 
       - uses: softprops/action-gh-release@v2
         with:
