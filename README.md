@@ -12,16 +12,16 @@
   </a>
 </div>
 
-This is MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) Server integrating MCP Clients with [Recraft AI](https://recraft.ai/)'s raster and vector image operations:
+This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) server integrating MCP clients with [Recraft AI](https://recraft.ai/)'s raster- and vector-image operations:
 
-- raster and vector images generation
-- raster and vector images editing
+- raster and vector image generation
+- raster and vector image editing
 - creating custom styles and generating images in them
 - vectorization of raster images
 - background removal and replacement
 - upscaling of raster images
 
-By connecting this MCP Server to your MCP Client you will be able to generate high-quality raster and vector images using Recraft, combining different tools.
+By connecting this MCP server to your MCP client you will be able to generate high-quality raster and vector images using Recraft, combining different tools.
 
 # Table of Contents
 
@@ -30,7 +30,7 @@ By connecting this MCP Server to your MCP Client you will be able to generate hi
   - [Prerequisites](#prerequisites)
   - [Claude Desktop Extensions](#claude-desktop-extensions)
   - [Smithery](#smithery)
-  - [Manual setup](#manual-setup)
+  - [Manual Setup](#manual-setup)
     - [From NPM](#from-npm)
     - [From source](#from-source)
 - [Tools](#tools)
@@ -39,31 +39,32 @@ By connecting this MCP Server to your MCP Client you will be able to generate hi
 
 ## Prerequisites
 
-- First of all, you will need a [Recraft AI API](https://www.recraft.ai/docs) key. To obtain it, register your account on [Recraft AI](https://www.recraft.ai), go to your [profile API page](https://www.recraft.ai/profile/api). Here you can buy API units (credits), and generate an API key.
+- First of all, you will need a [Recraft AI API](https://www.recraft.ai/docs) key. To obtain it, register your account on [Recraft AI](https://www.recraft.ai); then go to your [profile API page](https://www.recraft.ai/profile/api). Here you can buy API units (credits) and generate an API key.
 
-- You will need to have some MCP client installed, for example [Claude Desktop](https://claude.ai/download).
+- You will need to have an MCP client installed, for example [Claude Desktop](https://claude.ai/download).
 
 ## Claude Desktop Extensions
 
-If you are using [Claude Desktop](https://claude.ai/download) you can setup this server using [Claude Desktop Extensions](https://www.anthropic.com/engineering/desktop-extensions).
+If you are using [Claude Desktop](https://claude.ai/download) you can set up this server using [Claude Desktop Extensions](https://www.anthropic.com/engineering/desktop-extensions).
 
-- Download [mcp-recraft-server.dxt](https://github.com/recraft-ai/mcp-recraft-server/releases/latest/download/mcp-recraft-server.dxt)
-- Double-click to open this file with Claude Desktop
-- Click "Install"
-- Fill the form
+- Download `mcp-recraft-server.dxt` from the [latest release](https://github.com/recraft-ai/mcp-recraft-server/releases/latest/download/mcp-recraft-server.dxt)
+- Double-click the file to open it with Claude Desktop
+- Click Install
+- Fill out the form
 - Enable the server
 
-In the form you need to paste your Recraft AI API key obtained in your [profile API page](https://www.recraft.ai/profile/api). Also you can specify local path for generated images storage or mark that all results should be stored remotely.
+In the form you need to paste your Recraft AI API key obtained on your [profile API page](https://www.recraft.ai/profile/api). You can also specify a local path for generated image storage or indicate that all results should be stored remotely.
 
-In case of install issues check that you have the latest version of [Claude Desktop](https://claude.ai/download).
+In case of installation issues, check that you have the latest version of [Claude Desktop](https://claude.ai/download).
+
 
 ## Smithery
 
-You can find this MCP Server on [Smithery](https://smithery.ai/server/@recraft-ai/mcp-recraft-server). If this MCP is installed from Smithery then all generation results will be stored remotely. Use "Desktop Extensions" or "Manual setup" to store generation results on your local device.
+You can find this MCP server on [Smithery](https://smithery.ai/server/@recraft-ai/mcp-recraft-server). If this MCP is installed from Smithery, all generation results will be stored remotely. Use Desktop Extensions or Manual Setup to store generation results on your local device.
 
-## Manual setup
+## Manual Setup
 
-You're going to need Node working on your machine so you can run `npx` or `node` commands in your terminal. If you don't have Node, you can install it from [nodejs.org](https://nodejs.org/en/download).
+You're going to need Node running on your machine so you can run `npx` or `node` commands in your terminal. If you don't have Node, you can install it from [nodejs.org](https://nodejs.org/en/download).
 
 ### From NPM
 
