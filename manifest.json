@@ -79,14 +79,6 @@
       "required": true,
       "sensitive": true
     },
-    "IMAGE_STORAGE_DIRECTORY": {
-      "type": "string",
-      "title": "Image Storage Directory",
-      "description": "Local directory where all generated images will be stored",
-      "required": false,
-      "sensitive": false,
-      "default": "${HOME}/.mcp-recraft-server"
-    },
     "RECRAFT_REMOTE_RESULTS_STORAGE": {
       "type": "boolean",
       "title": "Store generated images remotely",
@@ -94,6 +86,14 @@
       "required": false,
       "sensitive": false,
       "default": false
+    },
+    "IMAGE_STORAGE_DIRECTORY": {
+      "type": "string",
+      "title": "Image Storage Directory",
+      "description": "Local directory where all generated images will be stored",
+      "required": false,
+      "sensitive": false,
+      "default": "${HOME}/.mcp-recraft-server"
     }
   },
   "keywords": [
