@@ -1,11 +1,11 @@
 {
   "dxt_version": "0.1",
-  "name": "Recraft AI",
+  "name": "Recraft",
   "version": "1.6.2",
-  "description": "Generate and edit images using Recraft AI",
-  "long_description": "This is MCP Server integrating MCP Clients with Recraft AI raster and vector image operations: image generation and editing, creating custom styles and generating images in them, vectorization of raster images, image background removal and replacement, image upscaling.",
+  "description": "Generate and edit images using Recraft",
+  "long_description": "This is MCP Server integrating MCP Clients with Recraft raster and vector image operations: image generation and editing, creating custom styles and generating images in them, vectorization of raster images, image background removal and replacement, image upscaling.",
   "author": {
-    "name": "Recraft AI",
+    "name": "Recraft",
     "email": "help@recraft.ai",
     "url": "https://recraft.ai"
   },
@@ -36,46 +36,46 @@
   "tools": [
     {
       "name": "generate_image",
-      "description": "Generate an image using Recraft AI from a text prompt."
+      "description": "Generate an image using Recraft from a text prompt."
     },
     {
       "name": "create_style",
-      "description": "Create a style in Recraft AI from the set of style reference images."
+      "description": "Create a style in Recraft from the set of style reference images."
     },
     {
       "name": "vectorize_image",
-      "description": "Vectorize an input image using Recraft AI."
+      "description": "Vectorize an input image using Recraft."
     },
     {
       "name": "image_to_image",
-      "description": "Generate an image using Recraft AI from an input image and a text prompt."
+      "description": "Generate an image using Recraft from an input image and a text prompt."
     },
     {
       "name": "remove_background",
-      "description": "Remove background in the input image using Recraft AI."
+      "description": "Remove background in the input image using Recraft."
     },
     {
       "name": "replace_background",
-      "description": "Generate an image using Recraft AI from an input image with its detected background replaced based on the prompt."
+      "description": "Generate an image using Recraft from an input image with its detected background replaced based on the prompt."
     },
     {
       "name": "crisp_upscale",
-      "description": "Crisp upscale of the input image using Recraft AI."
+      "description": "Crisp upscale of the input image using Recraft."
     },
     {
       "name": "creative_upscale",
-      "description": "Creative upscale of the input image using Recraft AI."
+      "description": "Creative upscale of the input image using Recraft."
     },
     {
       "name": "get_user",
-      "description": "Get information about the current Recraft AI API user."
+      "description": "Get information about the current Recraft API user."
     }
   ],
   "user_config": {
     "RECRAFT_API_KEY": {
       "type": "string",
-      "title": "Recraft AI API key",
-      "description": "Recraft AI API key can be obtained at https://www.recraft.ai/profile/api",
+      "title": "Recraft API key",
+      "description": "Recraft API key can be obtained at https://www.recraft.ai/profile/api",
       "required": true,
       "sensitive": true
     },

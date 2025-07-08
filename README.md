@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <img src="images/recraft.svg" width="500px">
-    <br/>Recraft AI MCP Server
+    <br/>Recraft MCP Server
   </h1>
 
   <img src="https://badge.mcpx.dev?type=server" title="MCP Server"/>
@@ -12,7 +12,7 @@
   </a>
 </div>
 
-This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) server integrating MCP clients with [Recraft AI](https://recraft.ai/)'s raster- and vector-image operations:
+This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) server integrating MCP clients with [Recraft](https://recraft.ai/)'s raster- and vector-image operations:
 
 - raster and vector image generation
 - raster and vector image editing
@@ -39,7 +39,7 @@ By connecting this MCP server to your MCP client you will be able to generate hi
 
 ## Prerequisites
 
-- First of all, you will need a [Recraft AI API](https://www.recraft.ai/docs) key. To obtain it, register your account on [Recraft AI](https://www.recraft.ai); then go to your [profile API page](https://www.recraft.ai/profile/api). Here you can buy API units (credits) and generate an API key.
+- First of all, you will need a [Recraft API](https://www.recraft.ai/docs) key. To obtain it, register your account on [Recraft](https://www.recraft.ai); then go to your [profile API page](https://www.recraft.ai/profile/api). Here you can buy API units (credits) and generate an API key.
 
 - You will need to have an MCP client installed, for example [Claude Desktop](https://claude.ai/download).
 
@@ -53,7 +53,7 @@ If you are using [Claude Desktop](https://claude.ai/download) you can set up thi
 - Fill out the form
 - Enable the server
 
-In the form you need to paste your Recraft AI API key obtained on your [profile API page](https://www.recraft.ai/profile/api). You can also specify a local path for generated image storage or indicate that all results should be stored remotely.
+In the form you need to paste your Recraft API key obtained on your [profile API page](https://www.recraft.ai/profile/api). You can also specify a local path for generated image storage or indicate that all results should be stored remotely.
 
 In case of installation issues, check that you have the latest version of [Claude Desktop](https://claude.ai/download).
 
@@ -124,7 +124,7 @@ Modify your `claude_desktop_config.json` file to add the following:
 
 You can specify these parameters:
 
-- `RECRAFT_API_KEY`: mandatory parameter, your [Recraft AI API](https://www.recraft.ai/profile/api) key.
+- `RECRAFT_API_KEY`: mandatory parameter, your [Recraft API](https://www.recraft.ai/profile/api) key.
 - `IMAGE_STORAGE_DIRECTORY`: optional parameter, you can specify the directory in which all generated images will be stored. By default this directory is `$HOME_DIR/.mcp-recraft-server`. If `RECRAFT_REMOTE_RESULTS_STORAGE="1"`, the value of this parameter is ignored.
 - `RECRAFT_REMOTE_RESULTS_STORAGE`: optional parameter, you can set the value to `"1"`, in this case all generated images will be stored remotely and their URLs will be returned. Also, `IMAGE_STORAGE_DIRECTORY` will be ignored in this case.
 
@@ -144,4 +144,4 @@ In this MCP you can use the following tools:
 | `creative_upscale` | Creative upscale of image | - image | \$0.25 |
 | `get_user` | Get information about the user and left balance |  |  |
 
-You can find the detailed explanation of tools, their parameters, and prices in [Recraft AI API docs](https://recraft.ai/docs).
+You can find the detailed explanation of tools, their parameters, and prices in [Recraft API docs](https://recraft.ai/docs).

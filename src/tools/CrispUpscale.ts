@@ -7,7 +7,7 @@ import { downloadImage } from "../utils/download"
 
 export const crispUpscaleTool = {
   name: "crisp_upscale",
-  description: "Crisp upscale of the input image using Recraft AI.\n" +
+  description: "Crisp upscale of the input image using Recraft.\n" +
     "This operation takes an input image and returns an upscaled image, making the image sharper and cleaner.\n" +
     "This version of upscale is much cheaper and faster than creative upscale.\n" +
     "Local path or URL to resulting image and its preview will be returned in the response.",

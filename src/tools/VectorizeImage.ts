@@ -7,7 +7,7 @@ import { downloadImage } from "../utils/download"
 
 export const vectorizeImageTool = {
   name: "vectorize_image",
-  description: "Vectorize an input image using Recraft AI.\n" +
+  description: "Vectorize an input image using Recraft.\n" +
    "This operation takes an input image and returns a vector SVG image, close to it.\n" +
    "Local path or URL to resulting image and its preview will be returned in the response.",
   inputSchema: {

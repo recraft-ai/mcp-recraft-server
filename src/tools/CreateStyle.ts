@@ -7,7 +7,7 @@ import { downloadImage } from "../utils/download"
 
 export const createStyleTool = {
   name: "create_style",
-  description: "Create a style in Recraft AI from the set of style reference images.\n" +
+  description: "Create a style in Recraft from the set of style reference images.\n" +
     "A style is extracted from the provided images and can be used in image generation tools.\n" +
     "ID of the created style will be returned in the response.",
   inputSchema: {

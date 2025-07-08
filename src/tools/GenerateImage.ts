@@ -6,7 +6,7 @@ import { PARAMETERS } from "../utils/parameters"
 
 export const generateImageTool = {
   name: "generate_image",
-  description: "Generate an image using Recraft AI from a text prompt.\n" +
+  description: "Generate an image using Recraft from a text prompt.\n" +
       "You can specify the image size, style, model, and number of images to generate.\n" +
       "You don't need to change default parameters if you don't have any specific requirements.\n" +
       "You can use styles to refine the image generation, and also to generate raster or vector images.\n" +
