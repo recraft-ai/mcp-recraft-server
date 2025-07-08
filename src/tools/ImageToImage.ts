@@ -8,7 +8,7 @@ import { downloadImage } from "../utils/download"
 
 export const imageToImageTool = {
   name: "image_to_image",
-  description: "Generate an image using Recraft AI from an input image and a text prompt.\n" +
+  description: "Generate an image using Recraft from an input image and a text prompt.\n" +
     "You can specify the reference input image, style, model, and number of images to generate.\n" +
     "You should provide the same style/substyle/styleID settings as were used for input image generation (if exists) if there are no specific requirements to change the style.\n" +
     "Other parameters are recommended to keep default if you don't have any specific requirements on them.\n" +

@@ -44,7 +44,7 @@
     "image vectorization",
     "image upscaling"
   ],
-  "author": "Recraft AI (https://recraft.ai/)",
+  "author": "Recraft (https://recraft.ai/)",
   "license": "MIT",
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.20.0",

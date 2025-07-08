@@ -7,7 +7,7 @@ startCommand:
     properties:
       RECRAFT_API_KEY:
         type: string
-        description: 'Your Recraft AI API key. Get one at https://www.recraft.ai/profile/api'
+        description: 'Your Recraft API key. Get one at https://www.recraft.ai/profile/api'
   commandFunction:
     |-
     (config) => ({
