@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.6.2...v1.6.3) (2025-07-08)
+
+
+### Bug Fixes
+
+* change Recraft AI to Recraft ([#31](https://github.com/recraft-ai/mcp-recraft-server/issues/31)) ([8b0c240](https://github.com/recraft-ai/mcp-recraft-server/commit/8b0c240673262631e995852961d48c5368d16bd5))
+
 ## [1.6.2](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.6.1...v1.6.2) (2025-07-03)
 
 
