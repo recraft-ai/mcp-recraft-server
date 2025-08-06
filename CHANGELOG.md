@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.5](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.6.4...v1.6.5) (2025-08-06)
+
+
+### Bug Fixes
+
+* manifest.json for dxt ([#35](https://github.com/recraft-ai/mcp-recraft-server/issues/35)) ([19a3d21](https://github.com/recraft-ai/mcp-recraft-server/commit/19a3d21f088d881ccc98ee7a66f66b4f35b28f85))
+
 ## [1.6.4](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.6.3...v1.6.4) (2025-08-06)
 
 
