@@ -42,8 +42,8 @@ export const generateImageHandler = async (server: RecraftServer, args: Record<s
       generateImageRequest: {
         prompt: prompt,
         size: size,
-        style: style,
-        substyle: substyle,
+        style: styleID ? undefined : style,
+        substyle: styleID ? undefined : substyle,
         styleId: styleID,
         model: model,
         responseFormat: 'url',
