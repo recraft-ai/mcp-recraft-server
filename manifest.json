@@ -25,11 +25,6 @@
         "RECRAFT_API_KEY": "${user_config.RECRAFT_API_KEY}",
         "IMAGE_STORAGE_DIRECTORY": "${user_config.IMAGE_STORAGE_DIRECTORY}",
         "RECRAFT_REMOTE_RESULTS_STORAGE": "${user_config.RECRAFT_REMOTE_RESULTS_STORAGE}"
-      },
-      "platforms": {
-        "win32": {
-          "command": "node.exe"
-        }
       }
     }
   },
