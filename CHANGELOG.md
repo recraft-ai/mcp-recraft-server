@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.4](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.6.3...v1.6.4) (2025-08-06)
+
+
+### Bug Fixes
+
+* if both style and style_id provided ignore style ([#33](https://github.com/recraft-ai/mcp-recraft-server/issues/33)) ([3acd07c](https://github.com/recraft-ai/mcp-recraft-server/commit/3acd07c8d54a89ec577f9053f4ce4eec6d2dd18f))
+
 ## [1.6.3](https://github.com/recraft-ai/mcp-recraft-server/compare/v1.6.2...v1.6.3) (2025-07-08)
 
 

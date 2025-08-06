@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1",
   "name": "Recraft",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "Generate and edit images using Recraft",
   "long_description": "This is MCP Server integrating MCP Clients with Recraft raster and vector image operations: image generation and editing, creating custom styles and generating images in them, vectorization of raster images, image background removal and replacement, image upscaling.",
   "author": {
