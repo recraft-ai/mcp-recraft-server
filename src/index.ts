@@ -3,6 +3,7 @@
 import "dotenv/config"
 import { Configuration } from './api'
 import { createRecraftApi } from "./RecraftApi"
+import { OAuthClient } from "./auth/oauth"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { generateImageHandler, generateImageTool } from "./tools/GenerateImage"
 import { imageToImageHandler, imageToImageTool } from "./tools/ImageToImage"
@@ -51,9 +52,20 @@ if (!remoteResultsStorage && !process.env.IMAGE_STORAGE_DIRECTORY) {
   process.env.IMAGE_STORAGE_DIRECTORY = path.join(homeDir, ".mcp-recraft-server")
 }
 
+const KEYCLOAK_URL = 'https://id.recraft.ai/'
+const KEYCLOAK_REALM = 'recraft'
+const KEYCLOAK_CLIENT_ID = 'frontend-client'
+
+const oauthClient = new OAuthClient(
+  KEYCLOAK_URL,
+  KEYCLOAK_REALM,
+  KEYCLOAK_CLIENT_ID,
+  Number(process.env.OAUTH_REDIRECT_PORT) || 3000,
+)
+
 const apiConfig = new Configuration({
   basePath: process.env.RECRAFT_API_URL,
-  accessToken: process.env.RECRAFT_API_KEY,
+  accessToken: () => oauthClient.getAccessToken(),
   headers: {
     'X-Client-Type': 'mcp-recraft-server',
   }
