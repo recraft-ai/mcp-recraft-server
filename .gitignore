@@ -1,9 +1,12 @@
 /node_modules
 /dist
 /.vscode
+/.idea
+/.claude/settings.local.json
 
 .env*
 
 yarn.lock
 
 .DS_Store
+i
