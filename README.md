@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/recraft-ai-mcp-recraft-server-badge.png)](https://mseep.ai/app/recraft-ai-mcp-recraft-server)
+
 <div align="center">
   <h1>
     <img src="images/recraft.svg" width="500px">
