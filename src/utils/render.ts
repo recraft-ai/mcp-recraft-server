@@ -9,11 +9,11 @@ export const rasterizeSvg = async (svg: string, scale?: number): Promise<ImageDa
   let img = sharp(svgBuffer).webp({quality: 95})
   if (width) img = img.resize({ width: Math.ceil(width * (scale ?? 1.0)) })
 
-  const rasterizedBuffer = await img.toBuffer()
+  const { data: rasterizedBuffer, info } = await img.toBuffer({ resolveWithObject: true })
 
   return {
     data: rasterizedBuffer.toString("base64"),
-    mimeType: 'image/webp',
+    mimeType: `image/${info.format}` as ImageData['mimeType'],
   }
 }
 
@@ -26,11 +26,11 @@ export const compressImage = async (image: ImageData, scale?: number): Promise<I
   let img = sharp(buffer).webp({quality: 95})
   if (width) img = img.resize({ width: Math.ceil(width * (scale ?? 1.0)) })
 
-  const compressedBuffer = await img.toBuffer()
+  const { data: compressedBuffer, info } = await img.toBuffer({ resolveWithObject: true })
 
   return {
     data: compressedBuffer.toString('base64'),
-    mimeType: 'image/webp',
+    mimeType: `image/${info.format}` as ImageData['mimeType'],
   }
 }
 
