@@ -52,11 +52,31 @@ export const PARAMETERS = {
 
   transformModel: {
     type: "string",
-    enum: [TransformModel.Recraftv3, TransformModel.Recraftv2],
-    description: "Model version to use. Default is recraftv3.\n" +
-      "- recraftv3 is the latest model and should be used in most cases.\n" +
-      "- recraftv2 is the previous state model, it has a bit cheaper generation.\n" +
-      "Be accurate with compatibility of model with style if it is specified, otherwise generation will fail."
+    enum: [
+      TransformModel.Recraftv41Vector,
+      TransformModel.Recraftv41Raster,
+      TransformModel.Recraftv41ProVector,
+      TransformModel.Recraftv41ProRaster,
+      TransformModel.Recraftv4Vector,
+      TransformModel.Recraftv4Raster,
+      TransformModel.Recraftv4ProVector,
+      TransformModel.Recraftv4ProRaster,
+      TransformModel.Recraftv3,
+      TransformModel.Recraftv2,
+    ],
+    description: "Model version to use. Default is recraftv4_1_vector.\n" +
+      "Recraft V4 family (launched Feb 2026) is the current state-of-the-art generation.\n" +
+      "V4/V4.1 models are style-less — they do NOT accept the `style` or `substyle` parameters. " +
+      "To steer V4 output use `styleID` (custom style created from reference images) or rely on the model's own design taste.\n" +
+      "V3/V2 keep the legacy style+substyle workflow and remain valid for cases where explicit style control is required (e.g. validated combo `vector_illustration + line_art` for clean line-art logos).\n" +
+      "Models:\n" +
+      "- recraftv4_1_vector: V4.1 vector output, $0.08/image. Default. Best for logos, brand assets, illustrations needing SVG.\n" +
+      "- recraftv4_1_raster: V4.1 raster output, $0.04/image. Best for marketing imagery, posters, photographic-style.\n" +
+      "- recraftv4_1_pro_vector / recraftv4_1_pro_raster: V4.1 Pro tier ($0.30 / $0.25). Higher fidelity, more compute.\n" +
+      "- recraftv4_vector / recraftv4_raster / recraftv4_pro_*: V4 (pre-4.1) generation, same pricing tiers.\n" +
+      "- recraftv3: legacy, supports full style+substyle taxonomy. $0.08/vector $0.04/raster.\n" +
+      "- recraftv2: older legacy, cheapest.\n" +
+      "When `style` or `substyle` is provided with a V4/V4.1 model the request will be rejected before reaching the API."
   },
 
   numberOfImages: {

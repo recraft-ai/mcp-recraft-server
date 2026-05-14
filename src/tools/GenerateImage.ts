@@ -3,6 +3,7 @@ import { ImageSize, ImageStyle, ImageSubStyle, TransformModel } from "../api"
 import z from "zod"
 import { RecraftServer } from "../RecraftServer"
 import { PARAMETERS } from "../utils/parameters"
+import { validateV4StyleCompatibility } from "../utils/validation"
 
 export const generateImageTool = {
   name: "generate_image",
@@ -37,6 +38,8 @@ export const generateImageHandler = async (server: RecraftServer, args: Record<s
       model: z.nativeEnum(TransformModel).optional(),
       numberOfImages: z.number().min(1).max(6).optional()
     }).parse(args)
+
+    validateV4StyleCompatibility(model, style, substyle)
 
     const result = await server.api.imageApi.generateImage({
       generateImageRequest: {

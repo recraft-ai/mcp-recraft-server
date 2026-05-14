@@ -5,6 +5,7 @@ import z from "zod"
 import { RecraftServer } from "../RecraftServer"
 import { PARAMETERS, STYLE_PRESERVATION_WARNING } from "../utils/parameters"
 import { downloadImage } from "../utils/download"
+import { validateV4StyleCompatibility } from "../utils/validation"
 
 export const imageToImageTool = {
   name: "image_to_image",
@@ -56,6 +57,8 @@ export const imageToImageHandler = async (server: RecraftServer, args: Record<st
       model: z.nativeEnum(TransformModel).optional(),
       numberOfImages: z.number().optional()
     }).parse(args)
+
+    validateV4StyleCompatibility(model, style, substyle)
 
     const imageData = await downloadImage(imageURI)
 
