@@ -33,7 +33,7 @@ export const vectorizeImageHandler = async (server: RecraftServer, args: Record<
       expire: server.isLocalResultsStorage,
     })
 
-    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Vectorized given image.')
+    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Vectorized given image.', result.credits)
   } catch (error) {
     return {
       content: [

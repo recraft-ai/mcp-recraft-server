@@ -50,7 +50,8 @@ export const createStyleHandler = async (server: RecraftServer, args: Record<str
       content: [
         {
           type: 'text',
-          text: `A new style with style_id ${result.id} created.\nYou can use this style in the image generation tools.`
+          text: `A new style with style_id ${result.id} created.\nYou can use this style in the image generation tools.` +
+            `\n[recraft.credits_used=${result.credits}]`
         }
       ],
       isError: false

@@ -38,7 +38,8 @@ export class RecraftServer {
     const message = `Generated ${images.length} image${ending}.\n` +
      `Original image${ending} ${images.length === 1 ? 'is' : 'are'} saved to:\n${images.map(({pathOrUrl}) => `- ${pathOrUrl}`).join('\n')}` +
      `\nBelow you can see lower quality preview${ending} of generated image${ending}.` +
-     `${previews.length < images.length ? `\nNote: last ${images.length - previews.length} images are not shown due to message limit, but you can still find them by given ${pathOrUrlDesc}s.` : ''}`
+     `${previews.length < images.length ? `\nNote: last ${images.length - previews.length} images are not shown due to message limit, but you can still find them by given ${pathOrUrlDesc}s.` : ''}` +
+     `\n[recraft.credits_used=${result.credits}]`
 
     const content = []
     content.push({
@@ -46,14 +47,14 @@ export class RecraftServer {
       text: message,
     })
     content.push(...previews)
-  
+
     return {
       content: content,
       isError: false
     } as CallToolResult
   }
 
-  transformSingleImageOperationToCallToolResult = async (image: Image, message: string): Promise<CallToolResult> => {
+  transformSingleImageOperationToCallToolResult = async (image: Image, message: string, credits?: number): Promise<CallToolResult> => {
     const {downloadedImages, previews} = await downloadImagesAndMakePreviews(this.imageStorageDirectory, [image])
 
     const imageData = downloadedImages[0]
@@ -62,10 +63,11 @@ export class RecraftServer {
 
     const totalMessage = message + '\n' +
       `Resulting image is saved to:\n- ${imageData.pathOrUrl}\n` +
-      (previews.length == 0 ? 
+      (previews.length == 0 ?
         `Note: preview image is not shown due to message limit, but you can find the resulting image by ${pathOrUrlDesc}.` :
         `Below you can see the lower quality preview image of the result.`
-      )
+      ) +
+      (credits !== undefined ? `\n[recraft.credits_used=${credits}]` : '')
 
     const content = []
     content.push({

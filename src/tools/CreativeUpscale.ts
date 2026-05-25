@@ -34,7 +34,7 @@ export const creativeUpscaleHandler = async (server: RecraftServer, args: Record
       expire: server.isLocalResultsStorage,
     })
 
-    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Creative upscale completed.')
+    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Creative upscale completed.', result.credits)
   } catch (error) {
     return {
       content: [

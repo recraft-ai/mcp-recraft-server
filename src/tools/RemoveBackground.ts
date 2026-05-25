@@ -33,7 +33,7 @@ export const removeBackgroundHandler = async (server: RecraftServer, args: Recor
       expire: server.isLocalResultsStorage,
     })
 
-    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Removed background.')
+    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Removed background.', result.credits)
   } catch (error) {
     return {
       content: [

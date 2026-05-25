@@ -34,7 +34,7 @@ export const crispUpscaleHandler = async (server: RecraftServer, args: Record<st
       expire: server.isLocalResultsStorage,
     })
 
-    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Crisp upscale completed.')
+    return await server.transformSingleImageOperationToCallToolResult(result.image, 'Crisp upscale completed.', result.credits)
   } catch (error) {
     return {
       content: [
