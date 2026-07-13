@@ -12,6 +12,35 @@
   </a>
 </div>
 
+> [!CAUTION]
+>
+> ## Deprecated
+>
+> **This project is deprecated.** No further updates, bug fixes, or security patches will be published.
+>
+> Please use the **Recraft remote MCP server** instead, available at `https://mcp.recraft.ai/mcp`, following the [remote server documentation](https://www.recraft.ai/docs/mcp-reference/remote-server). It requires no local installation or API key — authentication is handled via OAuth in your browser. Please keep in mind that the remote MCP server uses a different credits model.
+>
+> To migrate in Claude Code:
+>
+> ```bash
+> claude mcp add --transport http recraft https://mcp.recraft.ai/mcp
+> ```
+>
+> To migrate in Claude Desktop, replace this server's entry in your `claude_desktop_config.json` with:
+>
+> ```json
+> {
+>   "mcpServers": {
+>     "recraft": {
+>       "command": "npx",
+>       "args": ["-y", "mcp-remote", "https://mcp.recraft.ai/mcp"]
+>     }
+>   }
+> }
+> ```
+>
+> For Cursor, VS Code, and other MCP clients, see the [remote server documentation](https://www.recraft.ai/docs/mcp-reference/remote-server).
+
 This is an MCP ([Model Context Protocol](https://modelcontextprotocol.io/)) server integrating MCP clients with [Recraft](https://recraft.ai/)'s raster- and vector-image operations:
 
 - raster and vector image generation

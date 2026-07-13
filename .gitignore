@@ -3,6 +3,7 @@
 /.vscode
 
 .env*
+.idea
 
 yarn.lock
 
